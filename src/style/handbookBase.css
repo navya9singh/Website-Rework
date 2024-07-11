@@ -1,0 +1,221 @@
+#doc-layout {
+    display: flex;
+    flex-direction: row;
+    background-color: #faf9f8;
+    #sidebar {
+        background-color: #eeeeee;
+        color: #000;
+        min-width: 16rem;
+        table {
+            max-height: calc(100vh - 10px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+        }
+        .collapsible {    
+            background-color: transparent;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            height: 2.5rem;
+            padding-left: 1rem;
+            position: relative;
+            text-align: left;
+            width: 100%;
+        }
+          
+        .active, .collapsible:hover {
+          background-color: #e3e8ec;
+        }
+        .content {
+            &.selected-buttons {
+                background-color: #e3e8ec;
+            }
+        }
+        .content {
+          padding: 0;
+          display: none;
+          overflow: hidden;
+          background-color: #f1f1f1;
+        }
+
+        tr {
+            max-height: calc(100vh - 10px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            td {
+                border-bottom: 1px solid #dfdfdf;
+                font-size: 1rem;
+                font-weight: 400;
+                list-style: none;
+                min-height: 2.5rem;
+                padding: 0;
+                button {
+                    background-color: transparent;
+                    border: none;
+                    color: #000;
+                    cursor: pointer;
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    height: 2.5rem;
+                    padding-left: 1rem;
+                    position: relative;
+                    text-align: left;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .description {
+        display: flex;
+    }
+    
+    .md-block {
+
+        display: flex;
+        width: 100%;
+        margin: 0 auto 1rem;
+        overflow: hidden;
+        padding: 2rem;
+        background-color: #fff;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132);
+        color: 000;
+        
+        .md-block &.md-toc {
+            display: block;
+        }
+        .md-toc {
+            display: none;
+            flex-shrink: 0;
+            margin-left: 20px;
+            width: 13rem;
+        }
+        .md-toc-displayed {
+            display: block;
+            flex-shrink: 0;
+            margin-left: 20px;
+            width: 13rem;
+            margin-bottom: 1rem;
+            position: sticky;
+            top: 30px;
+            ul {
+                padding: 0;
+                max-height: 80vh;
+                overflow: auto;
+                li {
+                    list-style: none;
+                    a {
+                        border-left: 2px solid transparent;
+                        color: #000;
+                        display: block;
+                        font-size: 14px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        padding-left: 8px;
+                        text-decoration: none;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 3.5rem;
+    }
+    p {
+        line-height: 1.4rem;
+        code {
+            background-color: rgb(241, 241, 254);
+            font-family: "Cascadia Mono-SemiLight", Menlo, Monaco, Consolas, monospace;
+            font-size: .9rem;
+            padding: 2px 4px;
+        }
+    }
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 3.5rem;
+    }
+    h2 {
+        font-size: 1.75rem;
+        margin-bottom: 12px;
+        margin-top: 32px;
+    }
+    h3 {
+        font-size: 1.1875rem;
+        margin-bottom: 18px;
+        margin-top: 30px;
+    }
+    li {
+        padding-left: 10px;
+    } 
+    pre {
+        clear: both;
+        top: 10px;
+    }
+    article {
+        display: flex;
+        width: 100%;
+        #section1 {
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            padding: 2rem;
+            background-color: #fff;;
+            box-shadow: 0 1.6px 3.6px 0 rgba(255, 255, 255, 0.132);
+            color: #000;
+        }
+        #section2 {
+            display: block;
+            flex-shrink: 0;
+            margin-left: 20px;
+            width: 13rem;
+            margin-bottom: 1rem;
+            position: sticky;
+            top: 30px;
+            h5 {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 0;
+            }
+            ul {
+                padding: 0;
+                max-height: 80vh;
+                overflow: auto;
+                li {
+                    list-style: none;
+                    a {
+                        border-left: 2px solid transparent;
+                        color: #000;
+                        display: block;
+                        font-size: 14px;
+                        font-weight: 400;
+                        overflow: hidden;
+                        padding-left: 8px;
+                        text-decoration: none;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <link rel="stylesheet" href="../style/tsconfigReference.css">
+    <main>
+        <div class="tsconfig raised main-content-block markdown">
+            <article id="typeAcquisition">
+                <h2 id="type-acquisition" style="position:relative;"><a href="#type-acquisition"
+                        aria-label="type acquisition permalink" class="anchor before"><svg aria-hidden="true" focusable="false"
+                            height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                            <path fill-rule="evenodd"
+                                d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                            </path>
+                        </svg></a>Type Acquisition</h2>
+                <p>Type Acquisition is only important for JavaScript projects. In TypeScript projects you need to include the
+                    types in your projects explicitly. However, for JavaScript projects, the TypeScript tooling will download
+                    types for your modules in the background and outside of your node_modules folder.</p>
+                <div>
+                    <section class="compiler-option">
+                        <h3 id="type-enable-config"><a aria-label="Link to the compiler option: enable" id="type-enable"
+                                href="#type-enable" name="type-enable" aria-labelledby="type-enable-config">#</a> Enable -
+                            <code>enable</code></h3>
+                        <div class="compiler-content">
+                            <div class="markdown">
+                                <p>Disables automatic type acquisition in JavaScript projects:</p>
+                                <pre class="shiki light-plus"
+                                    style="background-color: #FFFFFF; color: #000000"><div class="language-id">json</div><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"typeAcquisition"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"enable"</span><span style="color: #000000">: </span><span style="color: #0000FF">false</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                            </div>
+                            <ul class="compiler-option-md"></ul>
+                        </div>
+                    </section>
+                    <section class="compiler-option">
+                        <h3 id="type-include-config"><a aria-label="Link to the compiler option: include" id="type-include"
+                                href="#type-include" name="type-include" aria-labelledby="type-include-config">#</a> Include -
+                            <code>include</code></h3>
+                        <div class="compiler-content">
+                            <div class="markdown">
+                                <p>If you have a JavaScript project where TypeScript needs additional guidance to understand
+                                    global dependencies, or have disabled the built-in inference via <a
+                                        href="#disableFilenameBasedTypeAcquisition"><code>disableFilenameBasedTypeAcquisition</code></a>.
+                                </p>
+                                <p>You can use <code>include</code> to specify which types should be used from DefinitelyTyped:
+                                </p>
+                                <pre class="shiki light-plus"
+                                    style="background-color: #FFFFFF; color: #000000"><div class="language-id">json</div><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"typeAcquisition"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"include"</span><span style="color: #000000">: [</span><span style="color: #A31515">"jquery"</span><span style="color: #000000">]</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="compiler-option">
+                        <h3 id="type-exclude-config"><a aria-label="Link to the compiler option: exclude" id="type-exclude"
+                                href="#type-exclude" name="type-exclude" aria-labelledby="type-exclude-config">#</a> Exclude -
+                            <code>exclude</code></h3>
+                        <div class="compiler-content">
+                            <div class="markdown">
+                                <p>Offers a config for disabling the type-acquisition for a certain module in JavaScript
+                                    projects. This can be useful for projects which include other libraries in testing
+                                    infrastructure which aren’t needed in the main application.</p>
+                                <pre class="shiki light-plus"
+                                    style="background-color: #FFFFFF; color: #000000"><div class="language-id">json</div><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"typeAcquisition"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"exclude"</span><span style="color: #000000">: [</span><span style="color: #A31515">"jest"</span><span style="color: #000000">, </span><span style="color: #A31515">"mocha"</span><span style="color: #000000">]</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="compiler-option">
+                        <h3 id="type-disableFilenameBasedTypeAcquisition-config"><a
+                                aria-label="Link to the compiler option: disableFilenameBasedTypeAcquisition"
+                                id="type-disableFilenameBasedTypeAcquisition" href="#type-disableFilenameBasedTypeAcquisition"
+                                name="type-disableFilenameBasedTypeAcquisition"
+                                aria-labelledby="type-disableFilenameBasedTypeAcquisition-config">#</a> Disable Filename Based
+                            Type Acquisition - <code>disableFilenameBasedTypeAcquisition</code></h3>
+                        <div class="compiler-content">
+                            <div class="markdown">
+                                <p>TypeScript’s type acquisition can infer what types should be added based on filenames in a
+                                    project. This means that having a file like <code>jquery.js</code> in your project would
+                                    automatically download the types for JQuery from DefinitelyTyped.</p>
+                                <p>You can disable this via <code>disableFilenameBasedTypeAcquisition</code>.</p>
+                                <pre class="shiki light-plus"
+                                    style="background-color: #FFFFFF; color: #000000"><div class="language-id">json</div><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"typeAcquisition"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"disableFilenameBasedTypeAcquisition"</span><span style="color: #000000">: </span><span style="color: #0000FF">true</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                            </div>
+                            <ul class="compiler-option-md">
+                                <li><span>Released:</span>
+                                    <p><a aria-label="Release notes for TypeScript 4.1"
+                                            href="/docs/handbook/release-notes/typescript-4-1.html">4.1</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </article>
+        </div>        
+    </main>
+</body>

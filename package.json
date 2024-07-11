@@ -11,6 +11,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "generate-build-info": "^0.0.3",
+    "markdown-it-shikiji": "^0.10.2",
+    "shikiji": "^0.10.2",
+    "shikiji-transformers": "^0.10.2"
+  },
+  "dependencies": {
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-table-of-contents": "^0.6.0"
   }
 }

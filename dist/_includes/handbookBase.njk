@@ -1,0 +1,163 @@
+{% include 'header.njk' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <link rel="stylesheet" href="../style/handbookBase.css">
+    <div id="doc-layout">
+        <div id="sidebar">
+            <table>
+                <tr>
+                    <td>
+                        <div class="side-content">
+                            <button type="button" class="collapsible">Get Started</button>
+                            <div class="content">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('getStarted1');">TS for the New Programmer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('getStarted2');">TS for JS Programmers</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('getStarted3');">TS for Functional Programmers</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="side-content">
+                            <button type="button" class="collapsible">Handbook</button>
+                            <div class="content">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook1');">The TypeScript Handbook</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook2');">The Basics</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook3');">Everyday Types</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="side-content">
+                            <button type="button" class="collapsible">Reference</button>
+                            <div class="content">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook1');">The TypeScript Handbook</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook2');">The Basics</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" onclick="displayDescription('handbook3');">Everyday Types</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <script>
+                    var coll = document.getElementsByClassName("collapsible");
+                    var i;
+                    for (i = 0; i < coll.length; i++) {
+                      coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                          content.style.display = "none";
+                        } else {
+                          content.style.display = "block";
+                        }
+                      });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                    const sideContentDivs = document.querySelectorAll('.content');
+
+                        sideContentDivs.forEach(div => {
+                            div.addEventListener('click', function(event) {
+                                if (event.target.tagName === 'BUTTON') {
+                                    // Add 'selected-buttons' class to the parent div of the clicked button
+                                    this.classList.add('selected-buttons');
+                                }
+                            });
+                        });
+                    });
+
+                    function toggleDisplay() {
+                        var content = document.querySelector('.content');
+                        if (content.style.display === 'none') {
+                            content.style.display = 'block';
+                        } if (content.style.display === 'block') {
+                            content.style.display = 'none';
+                        }
+                    }
+                </script>
+            </table>
+        </div>
+        <div id="description getStarted1" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/GetStarted/NewProgrammer.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <div id="description getStarted2" style="display: none; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/GetStarted/JSProgrammers.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <div id="description getStarted3" style="display: none; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/GetStarted/TS for Functional Programmers.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <div id="description handbook1" style="display: none; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/Handbook/The Handbook.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <div id="description handbook2" style="display: none; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/GetStarted/JSProgrammers.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <div id="description handbook3" style="display: none; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">
+            {% set snippet %}{% include '../pages/GetStarted/TS for Functional Programmers.md' %}{% endset %}
+            {% md snippet %}
+        </div>
+        <script>
+            var currentDiv = document.getElementById("description getStarted1");
+            function displayDescription(parameter) {
+                if (currentDiv) {
+                    currentDiv.style.display = 'none';
+                }
+                var newDiv = document.getElementById("description" + " " + parameter);
+                newDiv.style.display = 'block';
+                currentDiv = newDiv;
+            }
+        </script>
+    </div>
+    <main>
+        {{ content | safe }}
+    </main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ---
 title: TypeScript
-layout: "base.njk"
+layout: "header.njk"
 templateEngineOverride: njk,md
 ---
 {% include "home.njk" %}

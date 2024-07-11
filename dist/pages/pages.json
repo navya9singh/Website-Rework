@@ -1,0 +1,5 @@
+{
+    "layout": "sections",
+    "permalink": "/{{ page.fileSlug }}/",
+    "tags": "sections"
+}

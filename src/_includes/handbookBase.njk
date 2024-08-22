@@ -19,17 +19,17 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('getStarted1');">TS for the New Programmer</button>
+                                            <button type="button" onclick="displayDescription(this, 'getStarted1');">TS for the New Programmer</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('getStarted2');">TS for JS Programmers</button>
+                                            <button type="button" onclick="displayDescription(this, 'getStarted2');">TS for JS Programmers</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('getStarted3');">TS for Functional Programmers</button>
+                                            <button type="button" onclick="displayDescription(this, 'getStarted3');">TS for Functional Programmers</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -41,17 +41,17 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook1');">The TypeScript Handbook</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook1');">The TypeScript Handbook</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook2');">The Basics</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook2');">The Basics</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook3');">Everyday Types</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook3');">Everyday Types</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -63,17 +63,17 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook1');">The TypeScript Handbook</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook1');">The TypeScript Handbook</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook2');">The Basics</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook2');">The Basics</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button type="button" onclick="displayDescription('handbook3');">Everyday Types</button>
+                                            <button type="button" onclick="displayDescription(this, 'handbook3');">Everyday Types</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -146,10 +146,16 @@
         </div>
         <script>
             var currentDiv = document.getElementById("description getStarted1");
-            function displayDescription(parameter) {
+            function displayDescription(button, parameter) {
                 if (currentDiv) {
                     currentDiv.style.display = 'none';
                 }
+                // Change the background color of the closest div
+                var closestDiv = button.closest('div.side-content');
+                if (closestDiv) {
+                    closestDiv.classList.add('open');
+                }
+
                 var newDiv = document.getElementById("description" + " " + parameter);
                 newDiv.style.display = 'block';
                 currentDiv = newDiv;

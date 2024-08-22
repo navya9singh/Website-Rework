@@ -1,9 +1,3 @@
-// let markdown = require("markdown-it")({
-//     html: true
-//   }).use(require('markdown-it-table-of-contents'), {
-//     includeLevel: [2, 3], // specify the heading levels to include in the TOC
-//     containerClass: 'md-toc',
-//     }).use(require('markdown-it-anchor'), {})
 const path = require("path");
 const { readFile } = require("fs/promises");
 
@@ -20,7 +14,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/images");
     //eleventyConfig.addPlugin(require("libs/shikiji"));
     // eleventyConfig.addNunjucksShortcode(
-    //     "markdown",
+    //     "markdown", 
     //     content => { 
     //         const renderedContent = markdown.render(content);
     //         const toc = renderedContent.match(/<div class="md-toc">[\s\S]*?<\/div>/);
@@ -40,16 +34,16 @@ module.exports = function(eleventyConfig) {
         const highlighter = await getHighlighter({
 			langAlias: { kdl: "KDL" }, 
 		});
-		const theme = JSON.parse(await readFile(path.join(__dirname, "dark_modern.json"), "utf8"));
+		const theme = JSON.parse(await readFile(path.join(__dirname, "github_light_default.json"), "utf8"));
 		await highlighter.loadTheme(theme);
 		await highlighter.loadLanguage("css", "js", "json", "shell", "tsx", "typescript");
         md.use(
 			fromHighlighter(highlighter, {
-				theme: "dark-modern",
+				theme: "github-light-default",
 				transformers: [transformerNotationErrorLevel(), transformerNotationWordHighlight()],
 			}),
 		);
- 
+
         md.use(require("markdown-it-table-of-contents"), {
             includeLevel: [2, 3],
             containerClass: "md-toc",

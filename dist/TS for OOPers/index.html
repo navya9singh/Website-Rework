@@ -19,108 +19,108 @@
     </header>
     <main>
         
-<article><h1>TypeScript for Java/C# Programmers</h1>
+<article><h1 id="typescript-for-java%2Fc%23-programmers" tabindex="-1">TypeScript for Java/C# Programmers</h1>
 <p>TypeScript stands in an unusual relationship to JavaScript. TypeScript offers all of JavaScript's features, and an additional layer on top of these: TypeScript's type system.</p>
 <p>For example, JavaScript provides language primitives like <code>string</code> and <code>number</code>, but it doesn't check that you've consistently assigned these. TypeScript does.</p>
 <p>This means that your existing working JavaScript code is also TypeScript code. The main benefit of TypeScript is that it can highlight unexpected behavior in your code, lowering the chance of bugs.</p>
 <p>This tutorial provides a brief overview of TypeScript, focusing on its type system.</p>
-<h2>Types by Inference</h2>
+<h2 id="types-by-inference" tabindex="-1">Types by Inference</h2>
 <p>TypeScript knows the JavaScript language and will generate types for you in many cases.
 For example in creating a variable and assigning it to a particular value, TypeScript will use the value as its type.</p>
-<pre><code class="language-ts">let helloWorld = &quot;Hello World&quot;;
-//  ^?
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> helloWorld </span><span style="color:#CF222E">=</span><span style="color:#0A3069"> "Hello World"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#6E7781">//  ^?</span></span>
+<span class="line"></span></code></pre>
 <p>By understanding how JavaScript works, TypeScript can build a type-system that accepts JavaScript code but has types. This offers a type-system without needing to add extra characters to make types explicit in your code. That's how TypeScript knows that <code>helloWorld</code> is a <code>string</code> in the above example.</p>
 <p>You may have written JavaScript in Visual Studio Code, and had editor auto-completion. Visual Studio Code uses TypeScript under the hood to make it easier to work with JavaScript.</p>
-<h2>Defining Types</h2>
+<h2 id="defining-types" tabindex="-1">Defining Types</h2>
 <p>You can use a wide variety of design patterns in JavaScript. However, some design patterns make it difficult for types to be inferred automatically (for example, patterns that use dynamic programming). To cover these cases, TypeScript supports an extension of the JavaScript language, which offers places for you to tell TypeScript what the types should be.</p>
 <p>For example, to create an object with an inferred type which includes <code>name: string</code> and <code>id: number</code>, you can write:</p>
-<pre><code class="language-ts">const user = {
-  name: &quot;Hayes&quot;,
-  id: 0,
-};
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> user</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#1F2328">  name: </span><span style="color:#0A3069">"Hayes"</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">  id: </span><span style="color:#0550AE">0</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">};</span></span>
+<span class="line"></span></code></pre>
 <p>You can explicitly describe this object's shape using an <code>interface</code> declaration:</p>
-<pre><code class="language-ts">interface User {
-  name: string;
-  id: number;
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>You can then declare that a JavaScript object conforms to the shape of your new <code>interface</code> by using syntax like <code>: TypeName</code> after a variable declaration:</p>
-<pre><code class="language-ts">interface User {
-  name: string;
-  id: number;
-}
-// ---cut---
-const user: User = {
-  name: &quot;Hayes&quot;,
-  id: 0,
-};
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> user</span><span style="color:#CF222E">:</span><span style="color:#953800"> User</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#1F2328">  name: </span><span style="color:#0A3069">"Hayes"</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">  id: </span><span style="color:#0550AE">0</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">};</span></span>
+<span class="line"></span></code></pre>
 <p>If you provide an object that doesn't match the interface you have provided, TypeScript will warn you:</p>
-<pre><code class="language-ts">// @errors: 2322
-interface User {
-  name: string;
-  id: number;
-}
-
-const user: User = {
-  username: &quot;Hayes&quot;,
-  id: 0,
-};
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2322</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> user</span><span style="color:#CF222E">:</span><span style="color:#953800"> User</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#1F2328">  username: </span><span style="color:#0A3069">"Hayes"</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">  id: </span><span style="color:#0550AE">0</span><span style="color:#1F2328">,</span></span>
+<span class="line"><span style="color:#1F2328">};</span></span>
+<span class="line"></span></code></pre>
 <p>Since JavaScript supports classes and object-oriented programming, so does TypeScript. You can use an interface declaration with classes:</p>
-<pre><code class="language-ts">interface User {
-  name: string;
-  id: number;
-}
-
-class UserAccount {
-  name: string;
-  id: number;
-
-  constructor(name: string, id: number) {
-    this.name = name;
-    this.id = id;
-  }
-}
-
-const user: User = new UserAccount(&quot;Murphy&quot;, 1);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">class</span><span style="color:#953800"> UserAccount</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">  constructor</span><span style="color:#1F2328">(</span><span style="color:#953800">name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">, </span><span style="color:#953800">id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#0550AE">    this</span><span style="color:#1F2328">.name </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> name;</span></span>
+<span class="line"><span style="color:#0550AE">    this</span><span style="color:#1F2328">.id </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> id;</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> user</span><span style="color:#CF222E">:</span><span style="color:#953800"> User</span><span style="color:#CF222E"> =</span><span style="color:#CF222E"> new</span><span style="color:#8250DF"> UserAccount</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"Murphy"</span><span style="color:#1F2328">, </span><span style="color:#0550AE">1</span><span style="color:#1F2328">);</span></span>
+<span class="line"></span></code></pre>
 <p>You can use interfaces to annotate parameters and return values to functions:</p>
-<pre><code class="language-ts">// @noErrors
-interface User {
-  name: string;
-  id: number;
-}
-// ---cut---
-function deleteUser(user: User) {
-  // ...
-}
-
-function getAdminUser(): User {
-  //...
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @noErrors</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  id</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> deleteUser</span><span style="color:#1F2328">(</span><span style="color:#953800">user</span><span style="color:#CF222E">:</span><span style="color:#953800"> User</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#6E7781">  // ...</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> getAdminUser</span><span style="color:#1F2328">()</span><span style="color:#CF222E">:</span><span style="color:#953800"> User</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#6E7781">  //...</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>There is already a small set of primitive types available in JavaScript: <code>boolean</code>, <code>bigint</code>, <code>null</code>, <code>number</code>, <code>string</code>, <code>symbol</code>, and <code>undefined</code>, which you can use in an interface. TypeScript extends this list with a few more, such as <code>any</code> (allow anything), <a href="/play#example/unknown-and-never"><code>unknown</code></a> (ensure someone using this type declares what the type is), <a href="/play#example/unknown-and-never"><code>never</code></a> (it's not possible that this type could happen), and <code>void</code> (a function which returns <code>undefined</code> or has no return value).</p>
 <p>You'll see that there are two syntaxes for building types: <a href="/play/?e=83#example/types-vs-interfaces">Interfaces and Types</a>. You should prefer <code>interface</code>. Use <code>type</code> when you need specific features.</p>
-<h2>Composing Types</h2>
+<h2 id="composing-types" tabindex="-1">Composing Types</h2>
 <p>With TypeScript, you can create complex types by combining simple ones. There are two popular ways to do so: with unions, and with generics.</p>
-<h3>Unions</h3>
+<h3 id="unions" tabindex="-1">Unions</h3>
 <p>With a union, you can declare that a type could be one of many types. For example, you can describe a <code>boolean</code> type as being either <code>true</code> or <code>false</code>:</p>
-<pre><code class="language-ts">type MyBool = true | false;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> MyBool</span><span style="color:#CF222E"> =</span><span style="color:#0550AE"> true</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> false</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span></code></pre>
 <p><em>Note:</em> If you hover over <code>MyBool</code> above, you'll see that it is classed as <code>boolean</code>. That's a property of the Structural Type System. More on this below.</p>
 <p>A popular use-case for union types is to describe the set of <code>string</code> or <code>number</code> <a href="/docs/handbook/2/everyday-types.html#literal-types">literals</a> that a value is allowed to be:</p>
-<pre><code class="language-ts">type WindowStates = &quot;open&quot; | &quot;closed&quot; | &quot;minimized&quot;;
-type LockStates = &quot;locked&quot; | &quot;unlocked&quot;;
-type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> WindowStates</span><span style="color:#CF222E"> =</span><span style="color:#0A3069"> "open"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "closed"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "minimized"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> LockStates</span><span style="color:#CF222E"> =</span><span style="color:#0A3069"> "locked"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "unlocked"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> PositiveOddNumbersUnderTen</span><span style="color:#CF222E"> =</span><span style="color:#0550AE"> 1</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> 3</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> 5</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> 7</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> 9</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span></code></pre>
 <p>Unions provide a way to handle different types too. For example, you may have a function that takes an <code>array</code> or a <code>string</code>:</p>
-<pre><code class="language-ts">function getLength(obj: string | string[]) {
-  return obj.length;
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> getLength</span><span style="color:#1F2328">(</span><span style="color:#953800">obj</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">[]) {</span></span>
+<span class="line"><span style="color:#CF222E">  return</span><span style="color:#1F2328"> obj.</span><span style="color:#0550AE">length</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>To learn the type of a variable, use <code>typeof</code>:</p>
 <table>
 <thead>
@@ -158,100 +158,100 @@ type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 </table>
 <p>For example, you can make a function return different values depending on whether it is passed a string or an array:</p>
 <!-- prettier-ignore -->
-<pre><code class="language-ts">function wrapInArray(obj: string | string[]) {
-  if (typeof obj === &quot;string&quot;) {
-    return [obj];
-//          ^?
-  }
-  return obj;
-}
-</code></pre>
-<h3>Generics</h3>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> wrapInArray</span><span style="color:#1F2328">(</span><span style="color:#953800">obj</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">[]) {</span></span>
+<span class="line"><span style="color:#CF222E">  if</span><span style="color:#1F2328"> (</span><span style="color:#CF222E">typeof</span><span style="color:#1F2328"> obj </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "string"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> [obj];</span></span>
+<span class="line"><span style="color:#6E7781">//          ^?</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#CF222E">  return</span><span style="color:#1F2328"> obj;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="generics" tabindex="-1">Generics</h3>
 <p>Generics provide variables to types. A common example is an array. An array without generics could contain anything. An array with generics can describe the values that the array contains.</p>
-<pre><code class="language-ts">type StringArray = Array&lt;string&gt;;
-type NumberArray = Array&lt;number&gt;;
-type ObjectWithNameArray = Array&lt;{ name: string }&gt;;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> StringArray</span><span style="color:#CF222E"> =</span><span style="color:#953800"> Array</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">string</span><span style="color:#1F2328">>;</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> NumberArray</span><span style="color:#CF222E"> =</span><span style="color:#953800"> Array</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">number</span><span style="color:#1F2328">>;</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> ObjectWithNameArray</span><span style="color:#CF222E"> =</span><span style="color:#953800"> Array</span><span style="color:#1F2328">&#x3C;{ </span><span style="color:#953800">name</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> }>;</span></span>
+<span class="line"></span></code></pre>
 <p>You can declare your own types that use generics:</p>
-<pre><code class="language-ts">// @errors: 2345
-interface Backpack&lt;Type&gt; {
-  add: (obj: Type) =&gt; void;
-  get: () =&gt; Type;
-}
-
-// This line is a shortcut to tell TypeScript there is a
-// constant called `backpack`, and to not worry about where it came from.
-declare const backpack: Backpack&lt;string&gt;;
-
-// object is a string, because we declared it above as the variable part of Backpack.
-const object = backpack.get();
-
-// Since the backpack variable is a string, you can't pass a number to the add function.
-backpack.add(23);
-</code></pre>
-<h2>Structural Type System</h2>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2345</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Backpack</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">Type</span><span style="color:#1F2328">> {</span></span>
+<span class="line"><span style="color:#8250DF">  add</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> (</span><span style="color:#953800">obj</span><span style="color:#CF222E">:</span><span style="color:#953800"> Type</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#0550AE"> void</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#8250DF">  get</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> () </span><span style="color:#CF222E">=></span><span style="color:#953800"> Type</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7781">// This line is a shortcut to tell TypeScript there is a</span></span>
+<span class="line"><span style="color:#6E7781">// constant called `backpack`, and to not worry about where it came from.</span></span>
+<span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> const</span><span style="color:#0550AE"> backpack</span><span style="color:#CF222E">:</span><span style="color:#953800"> Backpack</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">string</span><span style="color:#1F2328">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7781">// object is a string, because we declared it above as the variable part of Backpack.</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> object</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> backpack.</span><span style="color:#8250DF">get</span><span style="color:#1F2328">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7781">// Since the backpack variable is a string, you can't pass a number to the add function.</span></span>
+<span class="line"><span style="color:#1F2328">backpack.</span><span style="color:#8250DF">add</span><span style="color:#1F2328">(</span><span style="color:#0550AE">23</span><span style="color:#1F2328">);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="structural-type-system" tabindex="-1">Structural Type System</h2>
 <p>One of TypeScript's core principles is that type checking focuses on the <em>shape</em> that values have. This is sometimes called &quot;duck typing&quot; or &quot;structural typing&quot;.</p>
 <p>In a structural type system, if two objects have the same shape, they are considered to be of the same type.</p>
-<pre><code class="language-ts">interface Point {
-  x: number;
-  y: number;
-}
-
-function logPoint(p: Point) {
-  console.log(`${p.x}, ${p.y}`);
-}
-
-// logs &quot;12, 26&quot;
-const point = { x: 12, y: 26 };
-logPoint(point);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Point</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> logPoint</span><span style="color:#1F2328">(</span><span style="color:#953800">p</span><span style="color:#CF222E">:</span><span style="color:#953800"> Point</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#1F2328">  console.</span><span style="color:#8250DF">log</span><span style="color:#1F2328">(</span><span style="color:#0A3069">`${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">x</span><span style="color:#0A3069">}, ${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">y</span><span style="color:#0A3069">}`</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7781">// logs "12, 26"</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> point</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { x: </span><span style="color:#0550AE">12</span><span style="color:#1F2328">, y: </span><span style="color:#0550AE">26</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#8250DF">logPoint</span><span style="color:#1F2328">(point);</span></span>
+<span class="line"></span></code></pre>
 <p>The <code>point</code> variable is never declared to be a <code>Point</code> type. However, TypeScript compares the shape of <code>point</code> to the shape of <code>Point</code> in the type-check. They have the same shape, so the code passes.</p>
 <p>The shape-matching only requires a subset of the object's fields to match.</p>
-<pre><code class="language-ts">// @errors: 2345
-interface Point {
-  x: number;
-  y: number;
-}
-
-function logPoint(p: Point) {
-  console.log(`${p.x}, ${p.y}`);
-}
-// ---cut---
-const point3 = { x: 12, y: 26, z: 89 };
-logPoint(point3); // logs &quot;12, 26&quot;
-
-const rect = { x: 33, y: 3, width: 30, height: 80 };
-logPoint(rect); // logs &quot;33, 3&quot;
-
-const color = { hex: &quot;#187ABF&quot; };
-logPoint(color);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2345</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Point</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> logPoint</span><span style="color:#1F2328">(</span><span style="color:#953800">p</span><span style="color:#CF222E">:</span><span style="color:#953800"> Point</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#1F2328">  console.</span><span style="color:#8250DF">log</span><span style="color:#1F2328">(</span><span style="color:#0A3069">`${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">x</span><span style="color:#0A3069">}, ${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">y</span><span style="color:#0A3069">}`</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> point3</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { x: </span><span style="color:#0550AE">12</span><span style="color:#1F2328">, y: </span><span style="color:#0550AE">26</span><span style="color:#1F2328">, z: </span><span style="color:#0550AE">89</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#8250DF">logPoint</span><span style="color:#1F2328">(point3); </span><span style="color:#6E7781">// logs "12, 26"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> rect</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { x: </span><span style="color:#0550AE">33</span><span style="color:#1F2328">, y: </span><span style="color:#0550AE">3</span><span style="color:#1F2328">, width: </span><span style="color:#0550AE">30</span><span style="color:#1F2328">, height: </span><span style="color:#0550AE">80</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#8250DF">logPoint</span><span style="color:#1F2328">(rect); </span><span style="color:#6E7781">// logs "33, 3"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> color</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { hex: </span><span style="color:#0A3069">"#187ABF"</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#8250DF">logPoint</span><span style="color:#1F2328">(color);</span></span>
+<span class="line"></span></code></pre>
 <p>There is no difference between how classes and objects conform to shapes:</p>
-<pre><code class="language-ts">// @errors: 2345
-interface Point {
-  x: number;
-  y: number;
-}
-
-function logPoint(p: Point) {
-  console.log(`${p.x}, ${p.y}`);
-}
-// ---cut---
-class VirtualPoint {
-  x: number;
-  y: number;
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-}
-
-const newVPoint = new VirtualPoint(13, 56);
-logPoint(newVPoint); // logs &quot;13, 56&quot;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2345</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Point</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> logPoint</span><span style="color:#1F2328">(</span><span style="color:#953800">p</span><span style="color:#CF222E">:</span><span style="color:#953800"> Point</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#1F2328">  console.</span><span style="color:#8250DF">log</span><span style="color:#1F2328">(</span><span style="color:#0A3069">`${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">x</span><span style="color:#0A3069">}, ${</span><span style="color:#1F2328">p</span><span style="color:#0A3069">.</span><span style="color:#1F2328">y</span><span style="color:#0A3069">}`</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">class</span><span style="color:#953800"> VirtualPoint</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#953800">  y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">  constructor</span><span style="color:#1F2328">(</span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">, </span><span style="color:#953800">y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#0550AE">    this</span><span style="color:#1F2328">.x </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> x;</span></span>
+<span class="line"><span style="color:#0550AE">    this</span><span style="color:#1F2328">.y </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> y;</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> newVPoint</span><span style="color:#CF222E"> =</span><span style="color:#CF222E"> new</span><span style="color:#8250DF"> VirtualPoint</span><span style="color:#1F2328">(</span><span style="color:#0550AE">13</span><span style="color:#1F2328">, </span><span style="color:#0550AE">56</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#8250DF">logPoint</span><span style="color:#1F2328">(newVPoint); </span><span style="color:#6E7781">// logs "13, 56"</span></span>
+<span class="line"></span></code></pre>
 <p>If the object or class has all the required properties, TypeScript will say they match, regardless of the implementation details.</p>
-<h2>Next Steps</h2>
+<h2 id="next-steps" tabindex="-1">Next Steps</h2>
 <p>This was a brief overview of the syntax and tools used in everyday TypeScript. From here, you can:</p>
 <ul>
 <li>Read the full Handbook <a href="/docs/handbook/intro.html">from start to finish</a></li>

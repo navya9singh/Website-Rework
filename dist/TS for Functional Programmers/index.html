@@ -19,7 +19,7 @@
     </header>
     <main>
         
-<article><h1>TypeScript for Functional Programmers</h1>
+<article><h1 id="typescript-for-functional-programmers" tabindex="-1">TypeScript for Functional Programmers</h1>
 <article>
 <div id="section1">
 TypeScript began its life as an attempt to bring traditional object-oriented types
@@ -35,7 +35,7 @@ modelling of JavaScript code.</p>
 <p>This introduction does not cover object-oriented programming. In
 practice, object-oriented programs in TypeScript are similar to those
 in other popular languages with OO features.</p>
-<h2>Prerequisites</h2>
+<h2 id="prerequisites" tabindex="-1">Prerequisites</h2>
 <p>In this introduction, I assume you know the following:</p>
 <ul>
 <li>How to program in JavaScript, the good parts.</li>
@@ -50,8 +50,8 @@ not much else.
 <p><a href="http://www.stroustrup.com/4th.html">The C++ Programming Language</a> is
 a good place to learn about C-style type syntax. Unlike C++,
 TypeScript uses postfix types, like so: <code>x: string</code> instead of <code>string x</code>.</p>
-<h2>Concepts not in Haskell</h2>
-<h3>Built-in types</h3>
+<h2 id="concepts-not-in-haskell" tabindex="-1">Concepts not in Haskell</h2>
+<h3 id="built-in-types" tabindex="-1">Built-in types</h3>
 <p>JavaScript defines 8 built-in types:</p>
 <table>
 <thead>
@@ -107,7 +107,7 @@ TypeScript uses postfix types, like so: <code>x: string</code> instead of <code>
 <li><code>undefined</code></li>
 <li><code>object</code></li>
 </ul>
-<h4>Other important TypeScript types</h4>
+<h4 id="other-important-typescript-types" tabindex="-1">Other important TypeScript types</h4>
 <table>
 <thead>
 <tr>
@@ -150,63 +150,63 @@ TypeScript uses postfix types, like so: <code>x: string</code> instead of <code>
 <ol>
 <li>
 <p>Function syntax includes parameter names. This is pretty hard to get used to!</p>
-<pre><code class="language-ts">let fst: (a: any, b: any) =&gt; any = (a, b) =&gt; a;
-
-// or more precisely:
-
-let fst: &lt;T, U&gt;(a: T, b: U) =&gt; T = (a, b) =&gt; a;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#8250DF"> fst</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> (</span><span style="color:#953800">a</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> any</span><span style="color:#1F2328">, </span><span style="color:#953800">b</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> any</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#0550AE"> any</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> (</span><span style="color:#953800">a</span><span style="color:#1F2328">, </span><span style="color:#953800">b</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#1F2328"> a;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6E7781">// or more precisely:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#8250DF"> fst</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> &#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">, </span><span style="color:#953800">U</span><span style="color:#1F2328">>(</span><span style="color:#953800">a</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">, </span><span style="color:#953800">b</span><span style="color:#CF222E">:</span><span style="color:#953800"> U</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#953800"> T</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> (</span><span style="color:#953800">a</span><span style="color:#1F2328">, </span><span style="color:#953800">b</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#1F2328"> a;</span></span>
+<span class="line"></span></code></pre>
 </li>
 <li>
 <p>Object literal type syntax closely mirrors object literal value syntax:</p>
-<pre><code class="language-ts">let o: { n: number; xs: object[] } = { n: 1, xs: [] };
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> o</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> { </span><span style="color:#953800">n</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">; </span><span style="color:#953800">xs</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> object</span><span style="color:#1F2328">[] } </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> { n: </span><span style="color:#0550AE">1</span><span style="color:#1F2328">, xs: [] };</span></span>
+<span class="line"></span></code></pre>
 </li>
 <li>
 <p><code>[T, T]</code> is a subtype of <code>T[]</code>. This is different than Haskell, where tuples are not related to lists.</p>
 </li>
 </ol>
-<h4>Boxed types</h4>
+<h4 id="boxed-types" tabindex="-1">Boxed types</h4>
 <p>JavaScript has boxed equivalents of primitive types that contain the
 methods that programmers associate with those types. TypeScript
 reflects this with, for example, the difference between the primitive
 type <code>number</code> and the boxed type <code>Number</code>. The boxed types are rarely
 needed, since their methods return primitives.</p>
-<pre><code class="language-ts">(1).toExponential();
-// equivalent to
-Number.prototype.toExponential.call(1);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#1F2328">(</span><span style="color:#0550AE">1</span><span style="color:#1F2328">).</span><span style="color:#8250DF">toExponential</span><span style="color:#1F2328">();</span></span>
+<span class="line"><span style="color:#6E7781">// equivalent to</span></span>
+<span class="line"><span style="color:#0550AE">Number</span><span style="color:#1F2328">.</span><span style="color:#0550AE">prototype</span><span style="color:#1F2328">.toExponential.</span><span style="color:#8250DF">call</span><span style="color:#1F2328">(</span><span style="color:#0550AE">1</span><span style="color:#1F2328">);</span></span>
+<span class="line"></span></code></pre>
 <p>Note that calling a method on a numeric literal requires it to be in
 parentheses to aid the parser.</p>
-<h3>Gradual typing</h3>
+<h3 id="gradual-typing" tabindex="-1">Gradual typing</h3>
 <p>TypeScript uses the type <code>any</code> whenever it can't tell what the type of
 an expression should be. Compared to <code>Dynamic</code>, calling <code>any</code> a type
 is an overstatement. It just turns off the type checker
 wherever it appears. For example, you can push any value into an
 <code>any[]</code> without marking the value in any way:</p>
-<pre><code class="language-ts">// with &quot;noImplicitAny&quot;: false in tsconfig.json, anys: any[]
-const anys = [];
-anys.push(1);
-anys.push(&quot;oh no&quot;);
-anys.push({ anything: &quot;goes&quot; });
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// with "noImplicitAny": false in tsconfig.json, anys: any[]</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> anys</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> [];</span></span>
+<span class="line"><span style="color:#1F2328">anys.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">(</span><span style="color:#0550AE">1</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">anys.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"oh no"</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">anys.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">({ anything: </span><span style="color:#0A3069">"goes"</span><span style="color:#1F2328"> });</span></span>
+<span class="line"></span></code></pre>
 <p>And you can use an expression of type <code>any</code> anywhere:</p>
-<pre><code class="language-ts">anys.map(anys[1]); // oh no, &quot;oh no&quot; is not a function
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#1F2328">anys.</span><span style="color:#8250DF">map</span><span style="color:#1F2328">(anys[</span><span style="color:#0550AE">1</span><span style="color:#1F2328">]); </span><span style="color:#6E7781">// oh no, "oh no" is not a function</span></span>
+<span class="line"></span></code></pre>
 <p><code>any</code> is contagious, too — if you initialize a variable with an
 expression of type <code>any</code>, the variable has type <code>any</code> too.</p>
-<pre><code class="language-ts">let sepsis = anys[0] + anys[1]; // this could mean anything
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> sepsis </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> anys[</span><span style="color:#0550AE">0</span><span style="color:#1F2328">] </span><span style="color:#CF222E">+</span><span style="color:#1F2328"> anys[</span><span style="color:#0550AE">1</span><span style="color:#1F2328">]; </span><span style="color:#6E7781">// this could mean anything</span></span>
+<span class="line"></span></code></pre>
 <p>To get an error when TypeScript produces an <code>any</code>, use
 <code>&quot;noImplicitAny&quot;: true</code>, or <code>&quot;strict&quot;: true</code> in <code>tsconfig.json</code>.</p>
-<h3>Structural typing</h3>
+<h3 id="structural-typing" tabindex="-1">Structural typing</h3>
 <p>Structural typing is a familiar concept to most functional
 programmers, although Haskell and most MLs are not
 structurally typed. Its basic form is pretty simple:</p>
-<pre><code class="language-ts">// @strict: false
-let o = { x: &quot;hi&quot;, extra: 1 }; // ok
-let o2: { x: string } = o; // ok
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @strict: false</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> o </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> { x: </span><span style="color:#0A3069">"hi"</span><span style="color:#1F2328">, extra: </span><span style="color:#0550AE">1</span><span style="color:#1F2328"> }; </span><span style="color:#6E7781">// ok</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> o2</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> { </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> } </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> o; </span><span style="color:#6E7781">// ok</span></span>
+<span class="line"></span></code></pre>
 <p>Here, the object literal <code>{ x: &quot;hi&quot;, extra: 1 }</code> has a matching
 literal type <code>{ x: string, extra: number }</code>. That
 type is assignable to <code>{ x: string }</code> since
@@ -218,43 +218,43 @@ there's no difference between the type alias <code>One</code> and the interface
 type <code>Two</code> below. They both have a property <code>p: string</code>. (Type aliases
 behave differently from interfaces with respect to recursive
 definitions and type parameters, however.)</p>
-<pre><code class="language-ts">// @errors: 2322
-type One = { p: string };
-interface Two {
-  p: string;
-}
-class Three {
-  p = &quot;Hello&quot;;
-}
-
-let x: One = { p: &quot;hi&quot; };
-let two: Two = x;
-two = new Three();
-</code></pre>
-<h3>Unions</h3>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2322</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> One</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { </span><span style="color:#953800">p</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Two</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  p</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#CF222E">class</span><span style="color:#953800"> Three</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  p</span><span style="color:#CF222E"> =</span><span style="color:#0A3069"> "Hello"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> x</span><span style="color:#CF222E">:</span><span style="color:#953800"> One</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { p: </span><span style="color:#0A3069">"hi"</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> two</span><span style="color:#CF222E">:</span><span style="color:#953800"> Two</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> x;</span></span>
+<span class="line"><span style="color:#1F2328">two </span><span style="color:#CF222E">=</span><span style="color:#CF222E"> new</span><span style="color:#8250DF"> Three</span><span style="color:#1F2328">();</span></span>
+<span class="line"></span></code></pre>
+<h3 id="unions" tabindex="-1">Unions</h3>
 <p>In TypeScript, union types are untagged. In other words, they are not
 discriminated unions like <code>data</code> in Haskell. However, you can often
 discriminate types in a union using built-in tags or other properties.</p>
-<pre><code class="language-ts">function start(
-  arg: string | string[] | (() =&gt; string) | { s: string }
-): string {
-  // this is super common in JavaScript
-  if (typeof arg === &quot;string&quot;) {
-    return commonCase(arg);
-  } else if (Array.isArray(arg)) {
-    return arg.map(commonCase).join(&quot;,&quot;);
-  } else if (typeof arg === &quot;function&quot;) {
-    return commonCase(arg());
-  } else {
-    return commonCase(arg.s);
-  }
-
-  function commonCase(s: string): string {
-    // finally, just convert a string to another string
-    return s;
-  }
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> start</span><span style="color:#1F2328">(</span></span>
+<span class="line"><span style="color:#953800">  arg</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#CF222E"> |</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">[] </span><span style="color:#CF222E">|</span><span style="color:#1F2328"> (() </span><span style="color:#CF222E">=></span><span style="color:#0550AE"> string</span><span style="color:#1F2328">) </span><span style="color:#CF222E">|</span><span style="color:#1F2328"> { </span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#6E7781">  // this is super common in JavaScript</span></span>
+<span class="line"><span style="color:#CF222E">  if</span><span style="color:#1F2328"> (</span><span style="color:#CF222E">typeof</span><span style="color:#1F2328"> arg </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "string"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#8250DF"> commonCase</span><span style="color:#1F2328">(arg);</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#CF222E"> if</span><span style="color:#1F2328"> (Array.</span><span style="color:#8250DF">isArray</span><span style="color:#1F2328">(arg)) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> arg.</span><span style="color:#8250DF">map</span><span style="color:#1F2328">(commonCase).</span><span style="color:#8250DF">join</span><span style="color:#1F2328">(</span><span style="color:#0A3069">","</span><span style="color:#1F2328">);</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#CF222E"> if</span><span style="color:#1F2328"> (</span><span style="color:#CF222E">typeof</span><span style="color:#1F2328"> arg </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "function"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#8250DF"> commonCase</span><span style="color:#1F2328">(</span><span style="color:#8250DF">arg</span><span style="color:#1F2328">());</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#8250DF"> commonCase</span><span style="color:#1F2328">(arg.s);</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">  function</span><span style="color:#8250DF"> commonCase</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#6E7781">    // finally, just convert a string to another string</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> s;</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p><code>string</code>, <code>Array</code> and <code>Function</code> have built-in type predicates,
 conveniently leaving the object type for the <code>else</code> branch. It is
 possible, however, to generate unions that are difficult to
@@ -309,33 +309,33 @@ discriminated unions.</p>
 </table>
 <p>Note that functions and arrays are objects at runtime, but have their
 own predicates.</p>
-<h4>Intersections</h4>
+<h4 id="intersections" tabindex="-1">Intersections</h4>
 <p>In addition to unions, TypeScript also has intersections:</p>
-<pre><code class="language-ts">type Combined = { a: number } &amp; { b: string };
-type Conflicting = { a: number } &amp; { a: string };
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Combined</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { </span><span style="color:#953800">a</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> } </span><span style="color:#CF222E">&#x26;</span><span style="color:#1F2328"> { </span><span style="color:#953800">b</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Conflicting</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { </span><span style="color:#953800">a</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> } </span><span style="color:#CF222E">&#x26;</span><span style="color:#1F2328"> { </span><span style="color:#953800">a</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> };</span></span>
+<span class="line"></span></code></pre>
 <p><code>Combined</code> has two properties, <code>a</code> and <code>b</code>, just as if they had been
 written as one object literal type. Intersection and union are
 recursive in case of conflicts, so <code>Conflicting.a: number &amp; string</code>.</p>
-<h3>Unit types</h3>
+<h3 id="unit-types" tabindex="-1">Unit types</h3>
 <p>Unit types are subtypes of primitive types that contain exactly one
 primitive value. For example, the string <code>&quot;foo&quot;</code> has the type
 <code>&quot;foo&quot;</code>. Since JavaScript has no built-in enums, it is common to use a set of
 well-known strings instead. Unions of string literal types allow
 TypeScript to type this pattern:</p>
-<pre><code class="language-ts">declare function pad(s: string, n: number, direction: &quot;left&quot; | &quot;right&quot;): string;
-pad(&quot;hi&quot;, 10, &quot;left&quot;);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> pad</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">, </span><span style="color:#953800">n</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">, </span><span style="color:#953800">direction</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "left"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "right"</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#8250DF">pad</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"hi"</span><span style="color:#1F2328">, </span><span style="color:#0550AE">10</span><span style="color:#1F2328">, </span><span style="color:#0A3069">"left"</span><span style="color:#1F2328">);</span></span>
+<span class="line"></span></code></pre>
 <p>When needed, the compiler <em>widens</em> — converts to a
 supertype — the unit type to the primitive type, such as <code>&quot;foo&quot;</code>
 to <code>string</code>. This happens when using mutability, which can hamper some
 uses of mutable variables:</p>
-<pre><code class="language-ts">// @errors: 2345
-declare function pad(s: string, n: number, direction: &quot;left&quot; | &quot;right&quot;): string;
-// ---cut---
-let s = &quot;right&quot;;
-pad(&quot;hi&quot;, 10, s); // error: 'string' is not assignable to '&quot;left&quot; | &quot;right&quot;'
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2345</span></span>
+<span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> pad</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">, </span><span style="color:#953800">n</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">, </span><span style="color:#953800">direction</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "left"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "right"</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> s </span><span style="color:#CF222E">=</span><span style="color:#0A3069"> "right"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#8250DF">pad</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"hi"</span><span style="color:#1F2328">, </span><span style="color:#0550AE">10</span><span style="color:#1F2328">, s); </span><span style="color:#6E7781">// error: 'string' is not assignable to '"left" | "right"'</span></span>
+<span class="line"></span></code></pre>
 <p>Here's how the error happens:</p>
 <ul>
 <li><code>&quot;right&quot;: &quot;right&quot;</code></li>
@@ -345,22 +345,22 @@ pad(&quot;hi&quot;, 10, s); // error: 'string' is not assignable to '&quot;left&
 <p>You can work around this with a type annotation for <code>s</code>, but that
 in turn prevents assignments to <code>s</code> of variables that are not of type
 <code>&quot;left&quot; | &quot;right&quot;</code>.</p>
-<pre><code class="language-ts">declare function pad(s: string, n: number, direction: &quot;left&quot; | &quot;right&quot;): string;
-// ---cut---
-let s: &quot;left&quot; | &quot;right&quot; = &quot;right&quot;;
-pad(&quot;hi&quot;, 10, s);
-</code></pre>
-<h2>Concepts similar to Haskell</h2>
-<h3>Contextual typing</h3>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> pad</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">, </span><span style="color:#953800">n</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">, </span><span style="color:#953800">direction</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "left"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "right"</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> s</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "left"</span><span style="color:#CF222E"> |</span><span style="color:#0A3069"> "right"</span><span style="color:#CF222E"> =</span><span style="color:#0A3069"> "right"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#8250DF">pad</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"hi"</span><span style="color:#1F2328">, </span><span style="color:#0550AE">10</span><span style="color:#1F2328">, s);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="concepts-similar-to-haskell" tabindex="-1">Concepts similar to Haskell</h2>
+<h3 id="contextual-typing" tabindex="-1">Contextual typing</h3>
 <p>TypeScript has some obvious places where it can infer types, like
 variable declarations:</p>
-<pre><code class="language-ts">let s = &quot;I'm a string!&quot;;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> s </span><span style="color:#CF222E">=</span><span style="color:#0A3069"> "I'm a string!"</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span></code></pre>
 <p>But it also infers types in a few other places that you may not expect
 if you've worked with other C-syntax languages:</p>
-<pre><code class="language-ts">declare function map&lt;T, U&gt;(f: (t: T) =&gt; U, ts: T[]): U[];
-let sns = map((n) =&gt; n.toString(), [1, 2, 3]);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> map</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">, </span><span style="color:#953800">U</span><span style="color:#1F2328">>(</span><span style="color:#8250DF">f</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> (</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#953800"> U</span><span style="color:#1F2328">, </span><span style="color:#953800">ts</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">[])</span><span style="color:#CF222E">:</span><span style="color:#953800"> U</span><span style="color:#1F2328">[];</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> sns </span><span style="color:#CF222E">=</span><span style="color:#8250DF"> map</span><span style="color:#1F2328">((</span><span style="color:#953800">n</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#1F2328"> n.</span><span style="color:#8250DF">toString</span><span style="color:#1F2328">(), [</span><span style="color:#0550AE">1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">2</span><span style="color:#1F2328">, </span><span style="color:#0550AE">3</span><span style="color:#1F2328">]);</span></span>
+<span class="line"></span></code></pre>
 <p>Here, <code>n: number</code> in this example also, despite the fact that <code>T</code> and <code>U</code>
 have not been inferred before the call. In fact, after <code>[1,2,3]</code> has
 been used to infer <code>T=number</code>, the return type of <code>n =&gt; n.toString()</code>
@@ -369,16 +369,16 @@ is used to infer <code>U=string</code>, causing <code>sns</code> to have the typ
 <p>Note that inference will work in any order, but intellisense will only
 work left-to-right, so TypeScript prefers to declare <code>map</code> with the
 array first:</p>
-<pre><code class="language-ts">declare function map&lt;T, U&gt;(ts: T[], f: (t: T) =&gt; U): U[];
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> map</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">, </span><span style="color:#953800">U</span><span style="color:#1F2328">>(</span><span style="color:#953800">ts</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">[], </span><span style="color:#8250DF">f</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> (</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#953800"> U</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#953800"> U</span><span style="color:#1F2328">[];</span></span>
+<span class="line"></span></code></pre>
 <p>Contextual typing also works recursively through object literals, and
 on unit types that would otherwise be inferred as <code>string</code> or
 <code>number</code>. And it can infer return types from context:</p>
-<pre><code class="language-ts">declare function run&lt;T&gt;(thunk: (t: T) =&gt; void): T;
-let i: { inference: string } = run((o) =&gt; {
-  o.inference = &quot;INSERT STATE HERE&quot;;
-});
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">declare</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> run</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">>(</span><span style="color:#8250DF">thunk</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> (</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#0550AE"> void</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> i</span><span style="color:#CF222E">:</span><span style="color:#1F2328"> { </span><span style="color:#953800">inference</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> string</span><span style="color:#1F2328"> } </span><span style="color:#CF222E">=</span><span style="color:#8250DF"> run</span><span style="color:#1F2328">((</span><span style="color:#953800">o</span><span style="color:#1F2328">) </span><span style="color:#CF222E">=></span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#1F2328">  o.inference </span><span style="color:#CF222E">=</span><span style="color:#0A3069"> "INSERT STATE HERE"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">});</span></span>
+<span class="line"></span></code></pre>
 <p>The type of <code>o</code> is determined to be <code>{ inference: string }</code> because</p>
 <ol>
 <li>Declaration initializers are contextually typed by the
@@ -393,81 +393,81 @@ get completions for the property <code>inference</code>, along with any other
 properties you'd have in a real program.
 Altogether, this feature can make TypeScript's inference look a bit
 like a unifying type inference engine, but it is not.</p>
-<h3>Type aliases</h3>
+<h3 id="type-aliases" tabindex="-1">Type aliases</h3>
 <p>Type aliases are mere aliases, just like <code>type</code> in Haskell. The
 compiler will attempt to use the alias name wherever it was used in
 the source code, but does not always succeed.</p>
-<pre><code class="language-ts">type Size = [number, number];
-let x: Size = [101.1, 999.9];
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Size</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">number</span><span style="color:#1F2328">, </span><span style="color:#0550AE">number</span><span style="color:#1F2328">];</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> x</span><span style="color:#CF222E">:</span><span style="color:#953800"> Size</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">101.1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">999.9</span><span style="color:#1F2328">];</span></span>
+<span class="line"></span></code></pre>
 <p>The closest equivalent to <code>newtype</code> is a <em>tagged intersection</em>:</p>
-<pre><code class="language-ts">type FString = string &amp; { __compileTimeOnly: any };
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> FString</span><span style="color:#CF222E"> =</span><span style="color:#0550AE"> string</span><span style="color:#CF222E"> &#x26;</span><span style="color:#1F2328"> { </span><span style="color:#953800">__compileTimeOnly</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> any</span><span style="color:#1F2328"> };</span></span>
+<span class="line"></span></code></pre>
 <p>An <code>FString</code> is just like a normal string, except that the compiler
 thinks it has a property named <code>__compileTimeOnly</code> that doesn't
 actually exist. This means that <code>FString</code> can still be assigned to
 <code>string</code>, but not the other way round.</p>
-<h3>Discriminated Unions</h3>
+<h3 id="discriminated-unions" tabindex="-1">Discriminated Unions</h3>
 <p>The closest equivalent to <code>data</code> is a union of types with discriminant
 properties, normally called discriminated unions in TypeScript:</p>
-<pre><code class="language-ts">type Shape =
-  | { kind: &quot;circle&quot;; radius: number }
-  | { kind: &quot;square&quot;; x: number }
-  | { kind: &quot;triangle&quot;; x: number; y: number };
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Shape</span><span style="color:#CF222E"> =</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "circle"</span><span style="color:#1F2328">; </span><span style="color:#953800">radius</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "square"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "triangle"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">; </span><span style="color:#953800">y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> };</span></span>
+<span class="line"></span></code></pre>
 <p>Unlike Haskell, the tag, or discriminant, is just a property in each
 object type. Each variant has an identical property with a different
 unit type. This is still a normal union type; the leading <code>|</code> is
 an optional part of the union type syntax. You can discriminate the
 members of the union using normal JavaScript code:</p>
-<pre><code class="language-ts">type Shape =
-  | { kind: &quot;circle&quot;; radius: number }
-  | { kind: &quot;square&quot;; x: number }
-  | { kind: &quot;triangle&quot;; x: number; y: number };
-
-function area(s: Shape) {
-  if (s.kind === &quot;circle&quot;) {
-    return Math.PI * s.radius * s.radius;
-  } else if (s.kind === &quot;square&quot;) {
-    return s.x * s.x;
-  } else {
-    return (s.x * s.y) / 2;
-  }
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Shape</span><span style="color:#CF222E"> =</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "circle"</span><span style="color:#1F2328">; </span><span style="color:#953800">radius</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "square"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "triangle"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">; </span><span style="color:#953800">y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> area</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#953800"> Shape</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">  if</span><span style="color:#1F2328"> (s.kind </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "circle"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> Math.</span><span style="color:#0550AE">PI</span><span style="color:#CF222E"> *</span><span style="color:#1F2328"> s.radius </span><span style="color:#CF222E">*</span><span style="color:#1F2328"> s.radius;</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#CF222E"> if</span><span style="color:#1F2328"> (s.kind </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "square"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> s.x </span><span style="color:#CF222E">*</span><span style="color:#1F2328"> s.x;</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> (s.x </span><span style="color:#CF222E">*</span><span style="color:#1F2328"> s.y) </span><span style="color:#CF222E">/</span><span style="color:#0550AE"> 2</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>Note that the return type of <code>area</code> is inferred to be <code>number</code> because
 TypeScript knows the function is total. If some variant is not
 covered, the return type of <code>area</code> will be <code>number | undefined</code> instead.</p>
 <p>Also, unlike Haskell, common properties show up in any union, so you
 can usefully discriminate multiple members of the union:</p>
-<pre><code class="language-ts">type Shape =
-  | { kind: &quot;circle&quot;; radius: number }
-  | { kind: &quot;square&quot;; x: number }
-  | { kind: &quot;triangle&quot;; x: number; y: number };
-// ---cut---
-function height(s: Shape) {
-  if (s.kind === &quot;circle&quot;) {
-    return 2 * s.radius;
-  } else {
-    // s.kind: &quot;square&quot; | &quot;triangle&quot;
-    return s.x;
-  }
-}
-</code></pre>
-<h3>Type Parameters</h3>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">type</span><span style="color:#953800"> Shape</span><span style="color:#CF222E"> =</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "circle"</span><span style="color:#1F2328">; </span><span style="color:#953800">radius</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "square"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }</span></span>
+<span class="line"><span style="color:#CF222E">  |</span><span style="color:#1F2328"> { </span><span style="color:#953800">kind</span><span style="color:#CF222E">:</span><span style="color:#0A3069"> "triangle"</span><span style="color:#1F2328">; </span><span style="color:#953800">x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">; </span><span style="color:#953800">y</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#6E7781">// ---cut---</span></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> height</span><span style="color:#1F2328">(</span><span style="color:#953800">s</span><span style="color:#CF222E">:</span><span style="color:#953800"> Shape</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">  if</span><span style="color:#1F2328"> (s.kind </span><span style="color:#CF222E">===</span><span style="color:#0A3069"> "circle"</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#0550AE"> 2</span><span style="color:#CF222E"> *</span><span style="color:#1F2328"> s.radius;</span></span>
+<span class="line"><span style="color:#1F2328">  } </span><span style="color:#CF222E">else</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#6E7781">    // s.kind: "square" | "triangle"</span></span>
+<span class="line"><span style="color:#CF222E">    return</span><span style="color:#1F2328"> s.x;</span></span>
+<span class="line"><span style="color:#1F2328">  }</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="type-parameters" tabindex="-1">Type Parameters</h3>
 <p>Like most C-descended languages, TypeScript requires declaration of
 type parameters:</p>
-<pre><code class="language-ts">function liftArray&lt;T&gt;(t: T): Array&lt;T&gt; {
-  return [t];
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> liftArray</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">>(</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#953800"> Array</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#1F2328">> {</span></span>
+<span class="line"><span style="color:#CF222E">  return</span><span style="color:#1F2328"> [t];</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>There is no case requirement, but type parameters are conventionally
 single uppercase letters. Type parameters can also be constrained to a
 type, which behaves a bit like type class constraints:</p>
-<pre><code class="language-ts">function firstish&lt;T extends { length: number }&gt;(t1: T, t2: T): T {
-  return t1.length &gt; t2.length ? t1 : t2;
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> firstish</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#CF222E"> extends</span><span style="color:#1F2328"> { </span><span style="color:#953800">length</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> }>(</span><span style="color:#953800">t1</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">, </span><span style="color:#953800">t2</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#CF222E">  return</span><span style="color:#1F2328"> t1.</span><span style="color:#0550AE">length</span><span style="color:#CF222E"> ></span><span style="color:#1F2328"> t2.</span><span style="color:#0550AE">length</span><span style="color:#CF222E"> ?</span><span style="color:#1F2328"> t1 </span><span style="color:#CF222E">:</span><span style="color:#1F2328"> t2;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 <p>TypeScript can usually infer type arguments from a call based on the
 type of the arguments, so type arguments are usually not needed.</p>
 <p>Because TypeScript is structural, it doesn't need type parameters as
@@ -475,89 +475,89 @@ much as nominal systems. Specifically, they are not needed to make a
 function polymorphic. Type parameters should only be used to
 <em>propagate</em> type information, such as constraining parameters to be
 the same type:</p>
-<pre><code class="language-ts">function length&lt;T extends ArrayLike&lt;unknown&gt;&gt;(t: T): number {}
-
-function length(t: ArrayLike&lt;unknown&gt;): number {}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> length</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#CF222E"> extends</span><span style="color:#953800"> ArrayLike</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">unknown</span><span style="color:#1F2328">>>(</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> length</span><span style="color:#1F2328">(</span><span style="color:#953800">t</span><span style="color:#CF222E">:</span><span style="color:#953800"> ArrayLike</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">unknown</span><span style="color:#1F2328">>)</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328"> {}</span></span>
+<span class="line"></span></code></pre>
 <p>In the first <code>length</code>, T is not necessary; notice that it's only
 referenced once, so it's not being used to constrain the type of the
 return value or other parameters.</p>
-<h4>Higher-kinded types</h4>
+<h4 id="higher-kinded-types" tabindex="-1">Higher-kinded types</h4>
 <p>TypeScript does not have higher kinded types, so the following is not legal:</p>
-<pre><code class="language-ts">function length&lt;T extends ArrayLike&lt;unknown&gt;, U&gt;(m: T&lt;U&gt;) {}
-</code></pre>
-<h4>Point-free programming</h4>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> length</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">T</span><span style="color:#CF222E"> extends</span><span style="color:#953800"> ArrayLike</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">unknown</span><span style="color:#1F2328">>, </span><span style="color:#953800">U</span><span style="color:#1F2328">>(</span><span style="color:#953800">m</span><span style="color:#CF222E">:</span><span style="color:#953800"> T</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">U</span><span style="color:#1F2328">>) {}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="point-free-programming" tabindex="-1">Point-free programming</h4>
 <p>Point-free programming — heavy use of currying and function
 composition — is possible in JavaScript, but can be verbose.
 In TypeScript, type inference often fails for point-free programs, so
 you'll end up specifying type parameters instead of value parameters. The
 result is so verbose that it's usually better to avoid point-free
 programming.</p>
-<h3>Module system</h3>
+<h3 id="module-system" tabindex="-1">Module system</h3>
 <p>JavaScript's modern module syntax is a bit like Haskell's, except that
 any file with <code>import</code> or <code>export</code> is implicitly a module:</p>
-<pre><code class="language-ts">import { value, Type } from &quot;npm-package&quot;;
-import { other, Types } from &quot;./local-package&quot;;
-import * as prefix from &quot;../lib/third-package&quot;;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">import</span><span style="color:#1F2328"> { value, Type } </span><span style="color:#CF222E">from</span><span style="color:#0A3069"> "npm-package"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#CF222E">import</span><span style="color:#1F2328"> { other, Types } </span><span style="color:#CF222E">from</span><span style="color:#0A3069"> "./local-package"</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#CF222E">import</span><span style="color:#0550AE"> *</span><span style="color:#CF222E"> as</span><span style="color:#1F2328"> prefix </span><span style="color:#CF222E">from</span><span style="color:#0A3069"> "../lib/third-package"</span><span style="color:#1F2328">;</span></span>
+<span class="line"></span></code></pre>
 <p>You can also import commonjs modules — modules written using node.js'
 module system:</p>
-<pre><code class="language-ts">import f = require(&quot;single-function-package&quot;);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">import</span><span style="color:#1F2328"> f </span><span style="color:#CF222E">=</span><span style="color:#CF222E"> require</span><span style="color:#1F2328">(</span><span style="color:#0A3069">"single-function-package"</span><span style="color:#1F2328">);</span></span>
+<span class="line"></span></code></pre>
 <p>You can export with an export list:</p>
-<pre><code class="language-ts">export { f };
-
-function f() {
-  return g();
-}
-function g() {} // g is not exported
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">export</span><span style="color:#1F2328"> { f };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> f</span><span style="color:#1F2328">() {</span></span>
+<span class="line"><span style="color:#CF222E">  return</span><span style="color:#8250DF"> g</span><span style="color:#1F2328">();</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> g</span><span style="color:#1F2328">() {} </span><span style="color:#6E7781">// g is not exported</span></span>
+<span class="line"></span></code></pre>
 <p>Or by marking each export individually:</p>
-<pre><code class="language-ts">export function f() { return g() }
-function g() { }
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">export</span><span style="color:#CF222E"> function</span><span style="color:#8250DF"> f</span><span style="color:#1F2328">() { </span><span style="color:#CF222E">return</span><span style="color:#8250DF"> g</span><span style="color:#1F2328">() }</span></span>
+<span class="line"><span style="color:#CF222E">function</span><span style="color:#8250DF"> g</span><span style="color:#1F2328">() { }</span></span>
+<span class="line"></span></code></pre>
 <p>The latter style is more common but both are allowed, even in the same
 file.</p>
-<h3><code>readonly</code> and <code>const</code></h3>
+<h3 id="readonly-and-const" tabindex="-1"><code>readonly</code> and <code>const</code></h3>
 <p>In JavaScript, mutability is the default, although it allows variable
 declarations with <code>const</code> to declare that the <em>reference</em> is
 immutable. The referent is still mutable:</p>
-<pre><code class="language-js">const a = [1, 2, 3];
-a.push(102); // ):
-a[0] = 101; // D:
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-js"><span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> a</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">2</span><span style="color:#1F2328">, </span><span style="color:#0550AE">3</span><span style="color:#1F2328">];</span></span>
+<span class="line"><span style="color:#1F2328">a.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">(</span><span style="color:#0550AE">102</span><span style="color:#1F2328">); </span><span style="color:#6E7781">// ):</span></span>
+<span class="line"><span style="color:#1F2328">a[</span><span style="color:#0550AE">0</span><span style="color:#1F2328">] </span><span style="color:#CF222E">=</span><span style="color:#0550AE"> 101</span><span style="color:#1F2328">; </span><span style="color:#6E7781">// D:</span></span>
+<span class="line"></span></code></pre>
 <p>TypeScript additionally has a <code>readonly</code> modifier for properties.</p>
-<pre><code class="language-ts">interface Rx {
-  readonly x: number;
-}
-let rx: Rx = { x: 1 };
-rx.x = 12; // error
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> Rx</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#CF222E">  readonly</span><span style="color:#953800"> x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> rx</span><span style="color:#CF222E">:</span><span style="color:#953800"> Rx</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { x: </span><span style="color:#0550AE">1</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#1F2328">rx.x </span><span style="color:#CF222E">=</span><span style="color:#0550AE"> 12</span><span style="color:#1F2328">; </span><span style="color:#6E7781">// error</span></span>
+<span class="line"></span></code></pre>
 <p>It also ships with a mapped type <code>Readonly&lt;T&gt;</code> that makes
 all properties <code>readonly</code>:</p>
-<pre><code class="language-ts">interface X {
-  x: number;
-}
-let rx: Readonly&lt;X&gt; = { x: 1 };
-rx.x = 12; // error
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">interface</span><span style="color:#953800"> X</span><span style="color:#1F2328"> {</span></span>
+<span class="line"><span style="color:#953800">  x</span><span style="color:#CF222E">:</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> rx</span><span style="color:#CF222E">:</span><span style="color:#953800"> Readonly</span><span style="color:#1F2328">&#x3C;</span><span style="color:#953800">X</span><span style="color:#1F2328">> </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> { x: </span><span style="color:#0550AE">1</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#1F2328">rx.x </span><span style="color:#CF222E">=</span><span style="color:#0550AE"> 12</span><span style="color:#1F2328">; </span><span style="color:#6E7781">// error</span></span>
+<span class="line"></span></code></pre>
 <p>And it has a specific <code>ReadonlyArray&lt;T&gt;</code> type that removes
 side-affecting methods and prevents writing to indices of the array,
 as well as special syntax for this type:</p>
-<pre><code class="language-ts">let a: ReadonlyArray&lt;number&gt; = [1, 2, 3];
-let b: readonly number[] = [1, 2, 3];
-a.push(102); // error
-b[0] = 101; // error
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> a</span><span style="color:#CF222E">:</span><span style="color:#953800"> ReadonlyArray</span><span style="color:#1F2328">&#x3C;</span><span style="color:#0550AE">number</span><span style="color:#1F2328">> </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">2</span><span style="color:#1F2328">, </span><span style="color:#0550AE">3</span><span style="color:#1F2328">];</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> b</span><span style="color:#CF222E">:</span><span style="color:#CF222E"> readonly</span><span style="color:#0550AE"> number</span><span style="color:#1F2328">[] </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">2</span><span style="color:#1F2328">, </span><span style="color:#0550AE">3</span><span style="color:#1F2328">];</span></span>
+<span class="line"><span style="color:#1F2328">a.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">(</span><span style="color:#0550AE">102</span><span style="color:#1F2328">); </span><span style="color:#6E7781">// error</span></span>
+<span class="line"><span style="color:#1F2328">b[</span><span style="color:#0550AE">0</span><span style="color:#1F2328">] </span><span style="color:#CF222E">=</span><span style="color:#0550AE"> 101</span><span style="color:#1F2328">; </span><span style="color:#6E7781">// error</span></span>
+<span class="line"></span></code></pre>
 <p>You can also use a const-assertion, which operates on arrays and
 object literals:</p>
-<pre><code class="language-ts">let a = [1, 2, 3] as const;
-a.push(102); // error
-a[0] = 101; // error
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> a </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> [</span><span style="color:#0550AE">1</span><span style="color:#1F2328">, </span><span style="color:#0550AE">2</span><span style="color:#1F2328">, </span><span style="color:#0550AE">3</span><span style="color:#1F2328">] </span><span style="color:#CF222E">as</span><span style="color:#CF222E"> const</span><span style="color:#1F2328">;</span></span>
+<span class="line"><span style="color:#1F2328">a.</span><span style="color:#8250DF">push</span><span style="color:#1F2328">(</span><span style="color:#0550AE">102</span><span style="color:#1F2328">); </span><span style="color:#6E7781">// error</span></span>
+<span class="line"><span style="color:#1F2328">a[</span><span style="color:#0550AE">0</span><span style="color:#1F2328">] </span><span style="color:#CF222E">=</span><span style="color:#0550AE"> 101</span><span style="color:#1F2328">; </span><span style="color:#6E7781">// error</span></span>
+<span class="line"></span></code></pre>
 <p>However, none of these options are the default, so they are not
 consistently used in TypeScript code.</p>
-<h3>Next Steps</h3>
+<h3 id="next-steps" tabindex="-1">Next Steps</h3>
 <p>This doc is a high level overview of the syntax and types you would use in everyday code. From here you should:</p>
 <ul>
 <li>Read the full Handbook <a href="/docs/handbook/intro.html">from start to finish</a></li>
@@ -566,7 +566,7 @@ consistently used in TypeScript code.</p>
 </div>
 <div id="section2">
   <h5>On this page</h5>
-<p>[[toc]]</p>
+<p><div class="md-toc"><ul><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#concepts-not-in-haskell">Concepts not in Haskell</a><ul><li><a href="#built-in-types">Built-in types</a></li><li><a href="#gradual-typing">Gradual typing</a></li><li><a href="#structural-typing">Structural typing</a></li><li><a href="#unions">Unions</a></li><li><a href="#unit-types">Unit types</a></li></ul></li><li><a href="#concepts-similar-to-haskell">Concepts similar to Haskell</a><ul><li><a href="#contextual-typing">Contextual typing</a></li><li><a href="#type-aliases">Type aliases</a></li><li><a href="#discriminated-unions">Discriminated Unions</a></li><li><a href="#type-parameters">Type Parameters</a></li><li><a href="#module-system">Module system</a></li><li><a href="#readonly-and-const">readonly and const</a></li><li><a href="#next-steps">Next Steps</a></li></ul></li></ul></div></p>
 </div>
 </article></article>
     </main>

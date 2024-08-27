@@ -58,9 +58,10 @@ For example, the last example above has an error because of the _type_ of `obj`.
 Here's the error TypeScript found:
 
 ```ts
-// @errors: 2551
 const obj = { width: 10, height: 15 };
 const area = obj.width * obj.heigth;
+Property 'heigth' does not exist on type '{ width: number; height: number; }'. Did you mean 'height'? // [!code error]
+
 ```
 
 ### A Typed Superset of JavaScript
@@ -76,6 +77,8 @@ For example, this code has a _syntax_ error because it's missing a `)`:
 ```ts twoslash
 // @errors: 1005
 let a = (4
+')' expected // [!code error]
+
 ```
 
 TypeScript doesn't consider any JavaScript code to be an error because of its syntax.

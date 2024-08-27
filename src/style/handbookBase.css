@@ -6,6 +6,11 @@
         background-color: #eeeeee;
         color: #000;
         min-width: 16rem;
+        .side-content {
+            &.open {
+                background-color: aqua;
+            }
+        }
         table {
             max-height: calc(100vh - 10px);
             overflow-x: hidden;
@@ -171,6 +176,14 @@
     pre {
         clear: both;
         top: 10px;
+        background-color: #fff;
+        border-bottom: 1px solid #999;
+        border-left: 1px solid #999;
+        color: #000;
+        margin-bottom: 3rem;
+        overflow-x: auto;
+        padding: 12px;
+        position: relative;
     }
     article {
         display: flex;
@@ -182,6 +195,14 @@
             background-color: #fff;;
             box-shadow: 0 1.6px 3.6px 0 rgba(255, 255, 255, 0.132);
             color: #000;
+            ul {
+                padding-left: 10px;
+                li {
+                    margin-bottom: 10px;
+                    margin-left: 10px;
+                    line-height: 1.4rem;
+                }
+            }
         }
         #section2 {
             display: block;

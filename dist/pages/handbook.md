@@ -1,5 +1,5 @@
 ---
-layout: "../_includes/handbookBase.njk"
+layout: "../_includes/handbook.njk"
 title: Start Handbook
 templateEngineOverride: njk,md
 ---

@@ -1,0 +1,132 @@
+{% include 'header.njk' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+    <body>
+        <link rel="stylesheet" href="../style/handbook.css">
+        <section id="doc-layout">
+        <nav id="sidebar">
+            <ul>
+                <li class="closed">
+                    <button aria-label="Get Started expand" onclick="toggleSection(event, this)">Get Started<span class="open">
+                            <svg fill="none" height="9" viewBox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m1 1 6 6 6-6" stroke="#000" stroke-width="2"></path>
+                            </svg>
+                        </span>
+                        <span class="closed">
+                            <svg fill="none" height="14" viewBox="0 0 9 14" width="9" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m1 13 6-6-6-6" stroke="#000" stroke-width="2"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul>
+                        <li>
+                            <a id="description-getStarted1" href="#" onclick="displayContent(event, 'content1')" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">TS for the New Programmer</a>                          
+                        </li>
+                        <li>
+                            <a id="description-getStarted2" href="#" onclick="displayContent(event, 'content2')" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">TypeScript for JS Programmers</a>                          
+                        </li>
+                        <li>
+                            <a id="description-getStarted3" href="#" onclick="displayContent(event, 'content3')" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">TS for Java/C# Programmers</a>                          
+                        </li>
+                        <li>
+                            <a id="description-getStarted4" href="#" onclick="displayContent(event, 'content4')" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">TS for Functional Programmers</a>                          
+                        </li>
+                        <li>
+                            <a id="description-getStarted5" href="#" onclick="displayContent(event, 'content5')" style="display: block; margin:auto; padding:0 2rem; max-width:1200px; min-width:0;">TypeScript Tooling in 5 minutes</a>                          
+                        </li>                                                                        
+                    </ul>
+                </li>
+                <li class="closed">
+                    <button aria-label="Reference expand" onclick="toggleSection(event, this)">Reference<span class="open">
+                            <svg fill="none" height="9" viewBox="0 0 14 9" width="14" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m1 1 6 6 6-6" stroke="#000" stroke-width="2"></path>
+                            </svg>
+                        </span>
+                        <span class="closed">
+                            <svg fill="none" height="14" viewBox="0 0 9 14" width="9" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m1 13 6-6-6-6" stroke="#000" stroke-width="2"></path>
+                            </svg>
+                        </span>
+                    </button>                   
+                </li>                
+            </ul>
+        </nav>
+            <div id="content1" class="content-placeholder" style="display: none;">
+            {% set snippet1 %}{% include '../pages/GetStarted/NewProgrammer.md' %}{% endset %}
+            {% md snippet1 %}
+            </div>
+            <div id="content2" class="content-placeholder" style="display: none;">
+            {% set snippet2 %}{% include '../pages/GetStarted/JSProgrammers.md' %}{% endset %}
+            {% md snippet2 %}
+            </div>
+            <div id="content3" class="content-placeholder" style="display: none;">
+            {% set snippet2 %}{% include '../pages/GetStarted/TS for OOPers.md' %}{% endset %}
+            {% md snippet2 %}
+            </div>
+            <div id="content4" class="content-placeholder" style="display: none;">
+            {% set snippet2 %}{% include '../pages/GetStarted/TS for Functional Programmers.md' %}{% endset %}
+            {% md snippet2 %}
+            </div>
+            <div id="content5" class="content-placeholder" style="display: none;">
+            {% set snippet2 %}{% include '../pages/GetStarted/NewProgrammer.md' %}{% endset %}
+            {% md snippet2 %}
+            </div>            
+        </section>   
+        <script>
+            function toggleSection(event, button) {
+                event.preventDefault(); // Prevent the default button behavior
+                var liElement = button.parentElement;
+                var isOpen = liElement.classList.contains('open');
+                // Toggle the class
+                if (isOpen) {
+                    liElement.classList.remove('open');
+                    liElement.classList.add('closed');
+                } else {
+                    liElement.classList.remove('closed');
+                    liElement.classList.add('open');
+                }
+                // Close other sections
+                var otherSections = document.querySelectorAll('li');
+                otherSections.forEach(function(section) {
+                    if (section !== liElement) {
+                        section.classList.remove('open');
+                        section.classList.add('closed');
+                    }
+                });
+            }
+            function displayContent(event, contentId) {
+                event.preventDefault(); // Prevent the default link behavior
+                // Hide all content placeholders
+                var placeholders = document.querySelectorAll('.content-placeholder');
+                placeholders.forEach(function(placeholder) {
+                    placeholder.style.display = 'none';
+                });
+                
+                // Display the selected content placeholder
+                var selectedContent = document.getElementById(contentId);
+                selectedContent.style.display = 'block';
+
+                // Remove 'open highlighted' class from all <li> elements
+                var allLiElements = document.querySelectorAll('li');
+                allLiElements.forEach(function(li) {
+                    li.classList.remove('open', 'highlighted');
+                });
+
+                // Add 'open highlighted' class to the grandparent <li> element of the clicked <a> tag
+                var clickedLiElement = event.target.closest('li');
+                if (clickedLiElement) {
+                    var grandparentLiElement = clickedLiElement.closest('li').closest('li');
+                    if (grandparentLiElement) {
+                        grandparentLiElement.classList.add('open', 'highlighted');
+                    }
+                }
+            }
+        </script>
+    </body>
+    {% include 'footer.njk' %}
+</html>

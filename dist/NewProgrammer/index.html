@@ -19,13 +19,13 @@
     </header>
     <main>
         
-<article><h1>TypeScript for the New Programmer</h1>
+<article><h1 id="typescript-for-the-new-programmer" tabindex="-1">TypeScript for the New Programmer</h1>
 <article>
 <div id="section1">
 <p>Congratulations on choosing TypeScript as one of your first languages — you're already making good decisions!</p>
 <p>You've probably already heard that TypeScript is a &quot;flavor&quot; or &quot;variant&quot; of JavaScript.
 The relationship between TypeScript (TS) and JavaScript (JS) is rather unique among modern programming languages, so learning more about this relationship will help you understand how TypeScript adds to JavaScript.</p>
-<h2>What is JavaScript? A Brief History</h2>
+<h2 id="what-is-javascript%3F-a-brief-history" tabindex="-1">What is JavaScript? A Brief History</h2>
 <p>JavaScript (also known as ECMAScript) started its life as a simple scripting language for browsers.
 At the time it was invented, it was expected to be used for short snippets of code embedded in a web page — writing more than a few dozen lines of code would have been somewhat unusual.
 Due to this, early web browsers executed such code pretty slowly.
@@ -41,64 +41,67 @@ Every language has its own <em>quirks</em> — oddities and surprises, and JavaS
 <ul>
 <li>
 <p>JavaScript's equality operator (<code>==</code>) <em>coerces</em> its operands, leading to unexpected behavior:</p>
-<pre><code class="language-shell">if (&quot;&quot; == 0) {
-  // It is! But why??
-}
-if (1 &lt; x &lt; 3) {
-  // True for *any* value of x!
-}
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-shell"><span class="line"><span style="color:#CF222E">if</span><span style="color:#1F2328"> (</span><span style="color:#953800">""</span><span style="color:#0A3069"> == </span><span style="color:#0550AE">0</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#953800">  //</span><span style="color:#0A3069"> It is! But why??</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"><span style="color:#CF222E">if</span><span style="color:#1F2328"> (</span><span style="color:#953800">1</span><span style="color:#CF222E"> &#x3C;</span><span style="color:#0A3069"> x </span><span style="color:#CF222E">&#x3C;</span><span style="color:#0550AE"> 3</span><span style="color:#1F2328">) {</span></span>
+<span class="line"><span style="color:#953800">  //</span><span style="color:#0A3069"> True for </span><span style="color:#0550AE">*</span><span style="color:#0A3069">any</span><span style="color:#0550AE">*</span><span style="color:#0A3069"> value of x!</span></span>
+<span class="line"><span style="color:#1F2328">}</span></span>
+<span class="line"></span></code></pre>
 </li>
 <li>
 <p>JavaScript also allows accessing properties which aren't present:</p>
-<pre><code class="language-js">const obj = { width: 10, height: 15 };
-// Why is this NaN? Spelling is hard!
-const area = obj.width * obj.heigth;
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-js"><span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> obj</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { width: </span><span style="color:#0550AE">10</span><span style="color:#1F2328">, height: </span><span style="color:#0550AE">15</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#6E7781">// Why is this NaN? Spelling is hard!</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> area</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> obj.width </span><span style="color:#CF222E">*</span><span style="color:#1F2328"> obj.heigth;</span></span>
+<span class="line"></span></code></pre>
 </li>
 </ul>
 <p>Most programming languages would throw an error when these sorts of errors occur, some would do so during compilation — before any code is running.
 When writing small programs, such quirks are annoying but manageable; when writing applications with hundreds or thousands of lines of code, these constant surprises are a serious problem.</p>
-<h2>TypeScript: A Static Type Checker</h2>
+<h2 id="typescript%3A-a-static-type-checker" tabindex="-1">TypeScript: A Static Type Checker</h2>
 <p>We said earlier that some languages wouldn't allow those buggy programs to run at all.
 Detecting errors in code without running it is referred to as <em>static checking</em>.
 Determining what's an error and what's not based on the kinds of values being operated on is known as static <em>type</em> checking.</p>
 <p>TypeScript checks a program for errors before execution, and does so based on the <em>kinds of values</em>, making it a <em>static type checker</em>.
 For example, the last example above has an error because of the <em>type</em> of <code>obj</code>.
 Here's the error TypeScript found:</p>
-<pre><code class="language-ts">// @errors: 2551
-const obj = { width: 10, height: 15 };
-const area = obj.width * obj.heigth;
-</code></pre>
-<h3>A Typed Superset of JavaScript</h3>
+<pre class="shiki github-light-default has-highlighted" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> obj</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> { width: </span><span style="color:#0550AE">10</span><span style="color:#1F2328">, height: </span><span style="color:#0550AE">15</span><span style="color:#1F2328"> };</span></span>
+<span class="line"><span style="color:#CF222E">const</span><span style="color:#0550AE"> area</span><span style="color:#CF222E"> =</span><span style="color:#1F2328"> obj.width </span><span style="color:#CF222E">*</span><span style="color:#1F2328"> obj.heigth;</span></span>
+<span class="line highlighted error"><span style="color:#1F2328">Property </span><span style="color:#0A3069">'heigth'</span><span style="color:#1F2328"> does not exist on type </span><span style="color:#0A3069">'{ width: number; height: number; }'</span><span style="color:#1F2328">. Did you mean </span><span style="color:#0A3069">'height'</span><span style="color:#CF222E">?</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<h3 id="a-typed-superset-of-javascript" tabindex="-1">A Typed Superset of JavaScript</h3>
 <p>How does TypeScript relate to JavaScript, though?</p>
-<h4>Syntax</h4>
+<h4 id="syntax" tabindex="-1">Syntax</h4>
 <p>TypeScript is a language that is a <em>superset</em> of JavaScript: JS syntax is therefore legal TS.
 Syntax refers to the way we write text to form a program.
 For example, this code has a <em>syntax</em> error because it's missing a <code>)</code>:</p>
-<pre><code class="language-ts">// @errors: 1005
-let a = (4
-</code></pre>
+<pre class="shiki github-light-default has-highlighted" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 1005</span></span>
+<span class="line"><span style="color:#CF222E">let</span><span style="color:#1F2328"> a </span><span style="color:#CF222E">=</span><span style="color:#1F2328"> (</span><span style="color:#0550AE">4</span></span>
+<span class="line highlighted error"><span style="color:#0A3069">')'</span><span style="color:#1F2328"> expected </span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
 <p>TypeScript doesn't consider any JavaScript code to be an error because of its syntax.
 This means you can take any working JavaScript code and put it in a TypeScript file without worrying about exactly how it is written.</p>
-<h4>Types</h4>
+<h4 id="types" tabindex="-1">Types</h4>
 <p>However, TypeScript is a <em>typed</em> superset, meaning that it adds rules about how different kinds of values can be used.
 The earlier error about <code>obj.heigth</code> was not a <em>syntax</em> error: it is an error of using some kind of value (a <em>type</em>) in an incorrect way.</p>
 <p>As another example, this is JavaScript code that you can run in your browser, and it <em>will</em> log a value:</p>
-<pre><code class="language-js">console.log(4 / []);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-js"><span class="line"><span style="color:#1F2328">console.</span><span style="color:#8250DF">log</span><span style="color:#1F2328">(</span><span style="color:#0550AE">4</span><span style="color:#CF222E"> /</span><span style="color:#1F2328"> []);</span></span>
+<span class="line"></span></code></pre>
 <p>This syntactically-legal program logs <code>Infinity</code>.
 TypeScript, though, considers division of number by an array to be a nonsensical operation, and will issue an error:</p>
-<pre><code class="language-ts">// @errors: 2363
-console.log(4 / []);
-</code></pre>
+<pre class="shiki github-light-default" style="background-color:#ffffff;color:#1f2328" tabindex="0"><code class="language-ts"><span class="line"><span style="color:#6E7781">// @errors: 2363</span></span>
+<span class="line"><span style="color:#1F2328">console.</span><span style="color:#8250DF">log</span><span style="color:#1F2328">(</span><span style="color:#0550AE">4</span><span style="color:#CF222E"> /</span><span style="color:#1F2328"> []);</span></span>
+<span class="line"></span></code></pre>
 <p>It's possible you really <em>did</em> intend to divide a number by an array, perhaps just to see what happens, but most of the time, though, this is a programming mistake.
 TypeScript's type checker is designed to allow correct programs through while still catching as many common errors as possible.
 (Later, we'll learn about settings you can use to configure how strictly TypeScript checks your code.)</p>
 <p>If you move some code from a JavaScript file to a TypeScript file, you might see <em>type errors</em> depending on how the code is written.
 These may be legitimate problems with the code, or TypeScript being overly conservative.
 Throughout this guide we'll demonstrate how to add various TypeScript syntax to eliminate such errors.</p>
-<h4>Runtime Behavior</h4>
+<h4 id="runtime-behavior" tabindex="-1">Runtime Behavior</h4>
 <p>TypeScript is also a programming language that preserves the <em>runtime behavior</em> of JavaScript.
 For example, dividing by zero in JavaScript produces <code>Infinity</code> instead of throwing a runtime exception.
 As a principle, TypeScript <strong>never</strong> changes the runtime behavior of JavaScript code.</p>
@@ -109,7 +112,7 @@ Missing subsection on the fact that TS extends JS to add syntax for type
 specification.  (Since the immediately preceding text was raving about
 how JS code can be used in TS.)
 -->
-<h4>Erased Types</h4>
+<h4 id="erased-types" tabindex="-1">Erased Types</h4>
 <p>Roughly speaking, once TypeScript's compiler is done with checking your code, it <em>erases</em> the types to produce the resulting &quot;compiled&quot; code.
 This means that once your code is compiled, the resulting plain JS code has no type information.</p>
 <p>This also means that TypeScript never changes the <em>behavior</em> of your program based on the types it inferred.
@@ -123,7 +126,7 @@ JS, and this might add small stubs of functionality when needed.  (Maybe
 with an example --- something like `?.` would be good in showing readers
 that this document is maintained.)
 -->
-<h2>Learning JavaScript and TypeScript</h2>
+<h2 id="learning-javascript-and-typescript" tabindex="-1">Learning JavaScript and TypeScript</h2>
 <p>We frequently see the question &quot;Should I learn JavaScript or TypeScript?&quot;.</p>
 <p>The answer is that you can't learn TypeScript without learning JavaScript!
 TypeScript shares syntax and runtime behavior with JavaScript, so anything you learn about JavaScript is helping you learn TypeScript at the same time.</p>
@@ -132,7 +135,7 @@ For example, there are about 20 times more StackOverflow questions tagged <code>
 <p>If you find yourself searching for something like &quot;how to sort a list in TypeScript&quot;, remember: <strong>TypeScript is JavaScript's runtime with a compile-time type checker</strong>.
 The way you sort a list in TypeScript is the same way you do so in JavaScript.
 If you find a resource that uses TypeScript directly, that's great too, but don't limit yourself to thinking you need TypeScript-specific answers for everyday questions about how to accomplish runtime tasks.</p>
-<h2>Next Steps</h2>
+<h2 id="next-steps" tabindex="-1">Next Steps</h2>
 <p>This was a brief overview of the syntax and tools used in everyday TypeScript. From here, you can:</p>
 <ul>
 <li>
@@ -173,7 +176,7 @@ If you find a resource that uses TypeScript directly, that's great too, but don'
 </div>
 <div id="section2">
   <h5>On this page</h5>
-<p>[[toc]]</p>
+<p><div class="md-toc"><ul><li><a href="#what-is-javascript%3F-a-brief-history">What is JavaScript? A Brief History</a></li><li><a href="#typescript%3A-a-static-type-checker">TypeScript: A Static Type Checker</a><ul><li><a href="#a-typed-superset-of-javascript">A Typed Superset of JavaScript</a></li></ul></li><li><a href="#learning-javascript-and-typescript">Learning JavaScript and TypeScript</a></li><li><a href="#next-steps">Next Steps</a></li></ul></div></p>
 </div>
 </article></article>
     </main>

@@ -8,8 +8,7 @@ const md = markdownIt({
 // const markdownItToc = require("markdown-it-table-of-contents");
 
 module.exports = function(eleventyConfig) {
-    markdownTemplateEngine: "njk",
-    eleventyConfig.addPassthroughCopy("./src/pages/");
+    eleventyConfig.addPassthroughCopy("./src/pages");
     eleventyConfig.addPassthroughCopy("./src/style");
     eleventyConfig.addPassthroughCopy("./src/images");
     //eleventyConfig.addPlugin(require("libs/shikiji"));
@@ -71,7 +70,7 @@ module.exports = function(eleventyConfig) {
         //         })
         //     }
         // });
-        
+    
     });
 
     return {

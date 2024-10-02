@@ -1,9 +1,7 @@
-// let markdown = require("markdown-it")({
-//     html: true
-//   }).use(require('markdown-it-table-of-contents'), {
-//     includeLevel: [2, 3], // specify the heading levels to include in the TOC
-//     containerClass: 'md-toc',
-//     }).use(require('markdown-it-anchor'), {})
+const { html } = require('htm/preact');
+const render = require('preact-render-to-string');
+const App = require('./src/components/app');
+
 const path = require("path");
 const { readFile } = require("fs/promises");
 
@@ -15,9 +13,12 @@ const md = markdownIt({
 
 module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
+    eleventyConfig.addPassthroughCopy("./src/_includes");
+    eleventyConfig.addPassthroughCopy("./src/page.11ty.js");
     eleventyConfig.addPassthroughCopy("./src/pages/");
     eleventyConfig.addPassthroughCopy("./src/style");
     eleventyConfig.addPassthroughCopy("./src/images");
+    eleventyConfig.addPassthroughCopy("./src/components/");
     //eleventyConfig.addPlugin(require("libs/shikiji"));
     // eleventyConfig.addNunjucksShortcode(
     //     "markdown",
@@ -55,9 +56,7 @@ module.exports = function(eleventyConfig) {
             containerClass: "md-toc",
         });
         md.use(require("markdown-it-anchor"), {});
-
-
-
+        
         // const { getHighlighter } = await import("shikiji");
         // const highlighter = await getHighlighter({
         //     themes: ['vitesse-dark'],
@@ -79,7 +78,7 @@ module.exports = function(eleventyConfig) {
         // });
         
     });
-
+    eleventyConfig.addGlobalData('content', App());
     return {
         dir: {
             includes: "_includes",

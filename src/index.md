@@ -8,3 +8,4 @@ Here we are!!!
 
 {% include "pageList.njk" %}
 {% include "footer.njk" %}
+{% include "playground.njk" %}

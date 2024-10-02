@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <link rel="stylesheet" href="../style/tsconfigReference.css">
+    <main>
+        <div class="tsconfig raised main-content-block markdown">
+            <article id="watchOptions">
+                <h2 id="watch-options" style="position:relative;"><a href="#watch-options" aria-label="watch options permalink"
+                class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1"
+                    viewBox="0 0 16 16" width="16">
+                    <path fill-rule="evenodd"
+                        d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+                    </path>
+                </svg></a>Watch Options</h2>
+                <p>You can configure the how TypeScript <code>--watch</code> works. This section is mainly for handling case
+                where <code>fs.watch</code> and <code>fs.watchFile</code> have additional constraints like on Linux. You can
+                read more at <a href="/docs/handbook/configuring-watch.html">Configuring Watch</a>.</p>
+        <div>
+        <section class="compiler-option">
+            <h3 id="watch-watchFile-config"><a aria-label="Link to the compiler option: watchFile"
+                    id="watch-watchFile" href="#watch-watchFile" name="watch-watchFile"
+                    aria-labelledby="watch-watchFile-config">#</a> Watch File - <code>watchFile</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>The strategy for how individual files are watched.</p>
+                    <ul>
+                        <li><code>fixedPollingInterval</code>: Check every file for changes several times a second
+                            at a fixed interval.</li>
+                        <li><code>priorityPollingInterval</code>: Check every file for changes several times a
+                            second, but use heuristics to check certain types of files less frequently than others.
+                        </li>
+                        <li><code>dynamicPriorityPolling</code>: Use a dynamic queue where less-frequently modified
+                            files will be checked less often.</li>
+                        <li><code>useFsEvents</code> (the default): Attempt to use the operating system/file
+                            system’s native events for file changes.</li>
+                        <li><code>useFsEventsOnParentDirectory</code>: Attempt to use the operating system/file
+                            system’s native events to listen for changes on a file’s parent directory</li>
+                    </ul>
+                </div>
+                <ul class="compiler-option-md">
+                    <li><span>Allowed:</span>
+                        <ul>
+                            <li>
+                                <p><code>fixedpollinginterval</code></p>
+                            </li>
+                            <li>
+                                <p><code>prioritypollinginterval</code></p>
+                            </li>
+                            <li>
+                                <p><code>dynamicprioritypolling</code></p>
+                            </li>
+                            <li>
+                                <p><code>fixedchunksizepolling</code></p>
+                            </li>
+                            <li>
+                                <p><code>usefsevents</code></p>
+                            </li>
+                            <li>
+                                <p><code>usefseventsonparentdirectory</code></p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>Released:</span>
+                        <p><a aria-label="Release notes for TypeScript 3.8"
+                                href="/docs/handbook/release-notes/typescript-3-8.html">3.8</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="compiler-option">
+            <h3 id="watch-watchDirectory-config"><a aria-label="Link to the compiler option: watchDirectory"
+                    id="watch-watchDirectory" href="#watch-watchDirectory" name="watch-watchDirectory"
+                    aria-labelledby="watch-watchDirectory-config">#</a> Watch Directory -
+                <code>watchDirectory</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>The strategy for how entire directory trees are watched under systems that lack recursive
+                        file-watching functionality.</p>
+                    <ul>
+                        <li><code>fixedPollingInterval</code>: Check every directory for changes several times a
+                            second at a fixed interval.</li>
+                        <li><code>dynamicPriorityPolling</code>: Use a dynamic queue where less-frequently modified
+                            directories will be checked less often.</li>
+                        <li><code>useFsEvents</code> (the default): Attempt to use the operating system/file
+                            system’s native events for directory changes.</li>
+                    </ul>
+                </div>
+                <ul class="compiler-option-md">
+                    <li><span>Allowed:</span>
+                        <ul>
+                            <li>
+                                <p><code>usefsevents</code></p>
+                            </li>
+                            <li>
+                                <p><code>fixedpollinginterval</code></p>
+                            </li>
+                            <li>
+                                <p><code>dynamicprioritypolling</code></p>
+                            </li>
+                            <li>
+                                <p><code>fixedchunksizepolling</code></p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>Released:</span>
+                        <p><a aria-label="Release notes for TypeScript 3.8"
+                                href="/docs/handbook/release-notes/typescript-3-8.html">3.8</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="compiler-option">
+            <h3 id="watch-fallbackPolling-config"><a aria-label="Link to the compiler option: fallbackPolling"
+                    id="watch-fallbackPolling" href="#watch-fallbackPolling" name="watch-fallbackPolling"
+                    aria-labelledby="watch-fallbackPolling-config">#</a> Fallback Polling -
+                <code>fallbackPolling</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>When using file system events, this option specifies the polling strategy that gets used when
+                        the system runs out of native file watchers and/or doesn’t support native file watchers.</p>
+                    <ul>
+                        <li><code>fixedPollingInterval</code>: Check every file for changes several times a second
+                            at a fixed interval.</li>
+                        <li><code>priorityPollingInterval</code>: Check every file for changes several times a
+                            second, but use heuristics to check certain types of files less frequently than others.
+                        </li>
+                        <li><code>dynamicPriorityPolling</code>: Use a dynamic queue where less-frequently modified
+                            files will be checked less often.</li>
+                        <li><code>synchronousWatchDirectory</code>: Disable deferred watching on directories.
+                            Deferred watching is useful when lots of file changes might occur at once (e.g. a change
+                            in <code>node_modules</code> from running <code>npm install</code>), but you might want
+                            to disable it with this flag for some less-common setups.</li>
+                    </ul>
+                </div>
+                <ul class="compiler-option-md">
+                    <li><span>Allowed:</span>
+                        <ul>
+                            <li>
+                                <p><code>fixedinterval</code></p>
+                            </li>
+                            <li>
+                                <p><code>priorityinterval</code></p>
+                            </li>
+                            <li>
+                                <p><code>dynamicpriority</code></p>
+                            </li>
+                            <li>
+                                <p><code>fixedchunksize</code></p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>Released:</span>
+                        <p><a aria-label="Release notes for TypeScript 3.8"
+                                href="/docs/handbook/release-notes/typescript-3-8.html">3.8</a></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="compiler-option">
+            <h3 id="watch-synchronousWatchDirectory-config"><a
+                    aria-label="Link to the compiler option: synchronousWatchDirectory"
+                    id="watch-synchronousWatchDirectory" href="#watch-synchronousWatchDirectory"
+                    name="watch-synchronousWatchDirectory"
+                    aria-labelledby="watch-synchronousWatchDirectory-config">#</a> Synchronous Watch Directory -
+                <code>synchronousWatchDirectory</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>Synchronously call callbacks and update the state of directory watchers on platforms that
+                        don`t support recursive
+                        watching natively. Instead of giving a small timeout to allow for potentially multiple edits
+                        to occur on a file.</p>
+                    <pre class="shiki light-plus tsconfig lsp" style="background-color: #FFFFFF; color: #000000"
+                        tsconfig="true"><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"watchOptions"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"<a aria-hidden="true" tabindex="-1" href="https://www.typescriptlang.org/tsconfig#synchronousWatchDirectory"><data-lsp lsp="Synchronously call callbacks and update the state of directory watchers on platforms that don`t support recursive watching natively.">synchronousWatchDirectory</data-lsp></a>"</span><span style="color: #000000">: </span><span style="color: #0000FF">true</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                </div>
+                <ul class="compiler-option-md"></ul>
+            </div>
+        </section>
+        <section class="compiler-option">
+            <h3 id="watch-excludeDirectories-config"><a aria-label="Link to the compiler option: excludeDirectories"
+                    id="watch-excludeDirectories" href="#watch-excludeDirectories" name="watch-excludeDirectories"
+                    aria-labelledby="watch-excludeDirectories-config">#</a> Exclude Directories -
+                <code>excludeDirectories</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>You can use <a href="#excludeFiles"><code>excludeFiles</code></a> to drastically reduce the
+                        number of files which are watched during <code>--watch</code>. This can be a useful way to
+                        reduce the number of open file which TypeScript tracks on Linux.</p>
+                    <pre class="shiki light-plus tsconfig lsp" style="background-color: #FFFFFF; color: #000000"
+                        tsconfig="true"><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"watchOptions"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"<a aria-hidden="true" tabindex="-1" href="https://www.typescriptlang.org/tsconfig#excludeDirectories"><data-lsp lsp="Remove a list of directories from the watch process.">excludeDirectories</data-lsp></a>"</span><span style="color: #000000">: [</span><span style="color: #A31515">"**/node_modules"</span><span style="color: #000000">, </span><span style="color: #A31515">"_build"</span><span style="color: #000000">, </span><span style="color: #A31515">"temp/*"</span><span style="color: #000000">]</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                </div>
+                <ul class="compiler-option-md"></ul>
+            </div>
+        </section>
+        <section class="compiler-option">
+            <h3 id="watch-excludeFiles-config"><a aria-label="Link to the compiler option: excludeFiles"
+                    id="watch-excludeFiles" href="#watch-excludeFiles" name="watch-excludeFiles"
+                    aria-labelledby="watch-excludeFiles-config">#</a> Exclude Files - <code>excludeFiles</code></h3>
+            <div class="compiler-content">
+                <div class="markdown">
+                    <p>You can use <code>excludeFiles</code> to remove a set of specific files from the files which
+                        are watched.</p>
+                    <pre class="shiki light-plus tsconfig lsp" style="background-color: #FFFFFF; color: #000000"
+                        tsconfig="true"><div class="code-container"><code><div class="line"><span style="color: #000000">{</span></div><div class="line"><span style="color: #000000">  </span><span style="color: #0451A5">"watchOptions"</span><span style="color: #000000">: {</span></div><div class="line"><span style="color: #000000">    </span><span style="color: #0451A5">"<a aria-hidden="true" tabindex="-1" href="https://www.typescriptlang.org/tsconfig#excludeFiles"><data-lsp lsp="Remove a list of files from the watch mode's processing.">excludeFiles</data-lsp></a>"</span><span style="color: #000000">: [</span><span style="color: #A31515">"temp/file.ts"</span><span style="color: #000000">]</span></div><div class="line"><span style="color: #000000">  }</span></div><div class="line"><span style="color: #000000">}</span></div></code></div></pre>
+                </div>
+                <ul class="compiler-option-md"></ul>
+            </div>
+        </section>
+        </div>
+    </article>
+        </div>
+    </main>
+</body>
+</html>
